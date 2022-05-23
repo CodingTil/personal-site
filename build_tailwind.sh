@@ -1,0 +1,1 @@
+npx postcss build ./assets/css/tailwind.css -o ./tailwind.css
