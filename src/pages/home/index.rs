@@ -1,4 +1,5 @@
 use yew::prelude::*;
+use crate::layouts::base::BaseLayout;
 
 #[function_component]
 pub fn Home() -> Html {
@@ -12,9 +13,9 @@ pub fn Home() -> Html {
 	};
 
 	html! {
-		<div>
-			<button class={classes!("bg-red-900")} {onclick}>{ "+1" }</button>
-			<p class={classes!("bg-red-900")}>{ *counter }</p>
-		</div>
+		<BaseLayout>
+			<button class={classes!("bg-rainbow-4", "text-xl", "text-sky-400")} {onclick}>{ "+1" }</button>
+			<p class={classes!("text-rainbow-3")}>{ *counter }</p>
+		</BaseLayout>
 	}
 }

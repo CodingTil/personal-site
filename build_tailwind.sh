@@ -1,1 +1,1 @@
-npx postcss build ./assets/css/tailwind.css -o ./tailwind.css
+tailwind build --postcss -i ./assets/css/tailwind.css -o ./tailwind.css --minify
