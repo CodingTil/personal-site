@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use crate::layouts::base::BaseLayout;
+use yew::prelude::*;
 
 #[function_component]
 pub fn Home() -> Html {

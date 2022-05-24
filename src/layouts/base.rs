@@ -3,7 +3,7 @@ use yew::prelude::*;
 #[derive(Properties, PartialEq)]
 pub struct BaseLayoutProps {
 	#[prop_or_default]
-    pub children: Children,
+	pub children: Children,
 }
 
 #[function_component]
