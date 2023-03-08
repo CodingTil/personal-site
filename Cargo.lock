@@ -232,6 +232,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "either"
+version = "1.8.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7fcaabb2fef8c910e7f4c7ce9f67a1283a1715879a7c230ca9d6d1ae31f16d91"
+
+[[package]]
 name = "entities"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -266,6 +272,15 @@ checksum = "9d6b8560a05112eb52f04b00e5d3790c0dd75d9d980eb8a122fb23b92a623ccf"
 dependencies = [
  "bit-set",
  "regex",
+]
+
+[[package]]
+name = "fastrand"
+version = "1.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e51093e27b0797c359783294ca4f0a911c270184cb10f85783b118614a1501be"
+dependencies = [
+ "instant",
 ]
 
 [[package]]
@@ -606,6 +621,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "instant"
+version = "0.1.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c"
+dependencies = [
+ "cfg-if",
+ "js-sys",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
 name = "io-lifetimes"
 version = "1.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -625,6 +652,15 @@ dependencies = [
  "io-lifetimes",
  "rustix",
  "windows-sys",
+]
+
+[[package]]
+name = "itertools"
+version = "0.10.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b0fd2260e829bddf4cb6ea802289de2f86d6a7a690192fbe91b3f46e0f2c8473"
+dependencies = [
+ "either",
 ]
 
 [[package]]
@@ -676,6 +712,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f051f77a7c8e6957c0696eac88f26b0117e54f52d3fc682ab19397a8812846a4"
 
 [[package]]
+name = "litrs"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b487d13a3f4b465df87895a37b24e364907019afa12d943528df5b7abe0836f1"
+dependencies = [
+ "proc-macro2",
+]
+
+[[package]]
 name = "log"
 version = "0.4.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -691,12 +736,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
 
 [[package]]
+name = "minimal-lexical"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
+
+[[package]]
 name = "miniz_oxide"
 version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b275950c28b37e794e8c55d88aeb5e139d0ce23fdbbeda68f8d7174abdf9e8fa"
 dependencies = [
  "adler",
+]
+
+[[package]]
+name = "nom"
+version = "7.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d273983c5a657a70a3e8f2a01329822f3b8c8172b73826411a55751e404a0a4a"
+dependencies = [
+ "memchr",
+ "minimal-lexical",
 ]
 
 [[package]]
@@ -755,7 +816,9 @@ version = "0.1.0"
 dependencies = [
  "comrak",
  "gloo-utils",
+ "once_cell",
  "serde",
+ "stylist",
  "yaml-front-matter",
  "yew",
  "yew-router",
@@ -1136,6 +1199,54 @@ name = "strsim"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
+
+[[package]]
+name = "stylist"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5a8dccf52b4a6dda7a7e229b712b5a31f3270e77365e2655cfeb13fd713535bf"
+dependencies = [
+ "fastrand",
+ "gloo-events",
+ "instant",
+ "once_cell",
+ "serde",
+ "stylist-core",
+ "stylist-macros",
+ "wasm-bindgen",
+ "web-sys",
+ "yew",
+]
+
+[[package]]
+name = "stylist-core"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f115d7e07846b817a0527d4ca7b9bca3342c2387fcda17330702f839c69380a1"
+dependencies = [
+ "nom",
+ "once_cell",
+ "serde",
+ "thiserror",
+ "wasm-bindgen",
+]
+
+[[package]]
+name = "stylist-macros"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7ba494c8364859e8cddf7b18598ab556803dbef994c13efaf9888a65ca0bb775"
+dependencies = [
+ "itertools",
+ "litrs",
+ "log",
+ "nom",
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "stylist-core",
+ "syn",
+]
 
 [[package]]
 name = "syn"
@@ -1549,7 +1660,8 @@ dependencies = [
 [[package]]
 name = "yew"
 version = "0.20.0"
-source = "git+https://github.com/yewstack/yew/#d63a91c08ac70df598a88b8f4385f9c57596e707"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5dbecfe44343b70cc2932c3eb445425969ae21754a8ab3a0966981c1cf7af1cc"
 dependencies = [
  "console_error_panic_hook",
  "futures",
@@ -1573,7 +1685,8 @@ dependencies = [
 [[package]]
 name = "yew-macro"
 version = "0.20.0"
-source = "git+https://github.com/yewstack/yew/#d63a91c08ac70df598a88b8f4385f9c57596e707"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b64c253c1d401f1ea868ca9988db63958cfa15a69f739101f338d6f05eea8301"
 dependencies = [
  "boolinator",
  "once_cell",
@@ -1587,7 +1700,8 @@ dependencies = [
 [[package]]
 name = "yew-router"
 version = "0.17.0"
-source = "git+https://github.com/yewstack/yew/#d63a91c08ac70df598a88b8f4385f9c57596e707"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "426ee0486d2572a6c5e39fbdbc48b58d59bb555f3326f54631025266cf04146e"
 dependencies = [
  "gloo",
  "js-sys",
@@ -1604,7 +1718,8 @@ dependencies = [
 [[package]]
 name = "yew-router-macro"
 version = "0.17.0"
-source = "git+https://github.com/yewstack/yew/#d63a91c08ac70df598a88b8f4385f9c57596e707"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "89b249cdb39e0cddaf0644dedc781854524374664793479fdc01e6a65d6e6ae3"
 dependencies = [
  "proc-macro2",
  "quote",
