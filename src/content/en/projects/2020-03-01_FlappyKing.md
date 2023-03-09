@@ -1,8 +1,8 @@
 ---
 slug: flappyking
-image: /FlappyKing/train.png
+image: <img src="images/projects/FlappyKing/train.png" alt="FlappyKing Training"/>
 title: FlappyKing
-color: bg-rainbow-5
+color: bg-cyan-600
 tagline: NEAT algorithm learning to play Flappy Bird
 url: https://github.com/CodingTil/FlappyKing
 date_range: July 2019 - January 2020
@@ -13,7 +13,7 @@ filters: [games, ai]
 After graduating from highschool, I set myself the goal to implement and train an AI from scratch. After working myself into the topic by implementing a Smart Rocket Genetic Algorithm project similar to [this one](https://thecodingtrain.com/CodingChallenges/029-smartrockets.html), I felt pretty confident about implementing and training a neural network.
 
 Firstly, I implemented a copy of Flappy Bird with the [Lightweight Java Game Library](https://www.lwjgl.org/).
-<image-flappy-king-train></image-flappy-king-train>
+<img src="images/projects/FlappyKing/train.png" alt="FlappyKing Training"/>
 
 After that however, I really struggeled implementing the AI. I tried a few approaches (Reinforcement Learning, Supervised Learning), but - even if I implemented them correctly - there was no training progress visible at all. So I kinda dropped the project and moved on.
 
@@ -24,7 +24,7 @@ Today the project consists of various gamemodes such as:
 - Co-op multiplayer
 - Training
 - Play vs. Computer
-<image-flappy-king-menu></image-flappy-king-menu>
+<img src="src/images/projects/FlappyKing/menu.png" alt="FlappyKing Menu"/>
 
 # Implementation
 

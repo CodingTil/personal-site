@@ -15,6 +15,7 @@ use crate::safehtml::SafeHtml;
 
 use crate::components::content_education::ContentEducation;
 use crate::components::content_teaching::ContentTeaching;
+use crate::components::project::ProjectCard;
 
 struct Translations {
 	projects: Cow<'static, str>,
@@ -110,6 +111,7 @@ pub fn Home() -> Html {
 		.map(|file| file.contents_utf8().unwrap())
 		.map(|s| String::from(s))
 		.collect::<Vec<String>>();
+
 	let projects_md_dir = match localization.get() {
 		Localization::EN => &CONTENT_EN_PROJECTS_DIR,
 		Localization::DE => &CONTENT_DE_PROJECTS_DIR,
@@ -121,6 +123,7 @@ pub fn Home() -> Html {
 		.map(|file| file.contents_utf8().unwrap())
 		.map(|s| String::from(s))
 		.collect::<Vec<String>>();
+
 	let teaching_md_dir = match localization.get() {
 		Localization::EN => &CONTENT_EN_TEACHING_DIR,
 		Localization::DE => &CONTENT_DE_TEACHING_DIR,
@@ -168,7 +171,22 @@ pub fn Home() -> Html {
 			</section>
 
 			/* Project Cards */
-			<img src="./src/images/projects/FlappyKing/train.png" alt="FlappyKing Training"/>
+			<section id="project_cards" class={String::from("bg-background-tertiary text-foreground-primary ") + &cv_section_css}>
+				<div class={section_box_css.clone()}>
+					<div class={String::from("border-foreground-secondary ") + &section_title_css}>
+						{ translation.projects.clone() }
+					</div>
+					<div class="flex flex-row flex-wrap justify-around p-5">
+						{
+							for projects_md_contents.into_iter().map(|content| {
+								html! {
+									<ProjectCard markdown={content} />
+								}
+							})
+						}
+					</div>
+				</div>
+			</section>
 
 			/* More About Me */
 			<section id="more_about_me" class={String::from("bg-foreground-tertiary text-background-primary ") + &cv_section_css}>
