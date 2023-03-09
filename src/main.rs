@@ -26,12 +26,12 @@ fn App() -> Html {
 	let theme = use_theme();
 
 	let mut rainbow_css = "".to_owned();
-	rainbow_css += format!(".text-rainbow-1 {{ color: {}; }} .bg-rainbow-1 {{ background-color: {}; }} .border-rainbow_1 {{ border-color: {}; }} ", theme.rainbow_1.clone(), theme.rainbow_1.clone(), theme.rainbow_1.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-2 {{ color: {}; }} .bg-rainbow-2 {{ background-color: {}; }} .border-rainbow_2 {{ border-color: {}; }} ", theme.rainbow_2.clone(), theme.rainbow_2.clone(), theme.rainbow_2.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-3 {{ color: {}; }} .bg-rainbow-3 {{ background-color: {}; }} .border-rainbow_3 {{ border-color: {}; }} ", theme.rainbow_3.clone(), theme.rainbow_3.clone(), theme.rainbow_3.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-4 {{ color: {}; }} .bg-rainbow-4 {{ background-color: {}; }} .border-rainbow_4 {{ border-color: {}; }} ", theme.rainbow_4.clone(), theme.rainbow_4.clone(), theme.rainbow_4.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-5 {{ color: {}; }} .bg-rainbow-5 {{ background-color: {}; }} .border-rainbow_5 {{ border-color: {}; }} ", theme.rainbow_5.clone(), theme.rainbow_5.clone(), theme.rainbow_5.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-6 {{ color: {}; }} .bg-rainbow-6 {{ background-color: {}; }} .border-rainbow_6 {{ border-color: {}; }} ", theme.rainbow_6.clone(), theme.rainbow_6.clone(), theme.rainbow_6.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-1 {{ color: {}; }} .bg-rainbow-1 {{ background-color: {}; }} .border-rainbow-1 {{ border-color: {}; }} ", theme.rainbow_1.clone(), theme.rainbow_1.clone(), theme.rainbow_1.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-2 {{ color: {}; }} .bg-rainbow-2 {{ background-color: {}; }} .border-rainbow-2 {{ border-color: {}; }} ", theme.rainbow_2.clone(), theme.rainbow_2.clone(), theme.rainbow_2.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-3 {{ color: {}; }} .bg-rainbow-3 {{ background-color: {}; }} .border-rainbow-3 {{ border-color: {}; }} ", theme.rainbow_3.clone(), theme.rainbow_3.clone(), theme.rainbow_3.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-4 {{ color: {}; }} .bg-rainbow-4 {{ background-color: {}; }} .border-rainbow-4 {{ border-color: {}; }} ", theme.rainbow_4.clone(), theme.rainbow_4.clone(), theme.rainbow_4.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-5 {{ color: {}; }} .bg-rainbow-5 {{ background-color: {}; }} .border-rainbow-5 {{ border-color: {}; }} ", theme.rainbow_5.clone(), theme.rainbow_5.clone(), theme.rainbow_5.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-6 {{ color: {}; }} .bg-rainbow-6 {{ background-color: {}; }} .border-rainbow-6 {{ border-color: {}; }} ", theme.rainbow_6.clone(), theme.rainbow_6.clone(), theme.rainbow_6.clone()).as_str();
 
 	let mut foreground_css = "".to_owned();
 	foreground_css += format!(".text-foreground-primary {{ color: {}; }} .bg-foreground-primary {{ background-color: {}; }} .border-foreground-primary {{ border-color: {}; }} ", theme.foreground_primary.clone(), theme.foreground_primary.clone(), theme.foreground_primary.clone()).as_str();

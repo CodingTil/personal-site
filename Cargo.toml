@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 comrak = "0.16.0"
 gloo-utils = "0.1.6"
+include_dir = "0.7.3"
 once_cell = "1.17.1"
 serde = "1.0.152"
 stylist = { version = "0.12.0", features = ["yew_integration", "parser"] }

@@ -10,19 +10,19 @@ use crate::components::content_item::ContentItem;
 #[derive(Deserialize)]
 struct Metadata {
 	title: String,
-	education: String,
+	employer: String,
 	date_range: String,
 	location: String,
 }
 
 #[derive(Debug, PartialEq, Properties)]
-pub struct ContentEducationProps {
+pub struct ContentTeachingProps {
 	pub markdown: String,
 	pub border_color: String,
 }
 
 #[styled_component]
-pub fn ContentEducation(props: &ContentEducationProps) -> Html {
+pub fn ContentTeaching(props: &ContentTeachingProps) -> Html {
 	let md_str = props.markdown.clone();
 
 	// Get Front Matter
@@ -31,7 +31,7 @@ pub fn ContentEducation(props: &ContentEducationProps) -> Html {
 	let md = document.content;
 	let Metadata {
 		title,
-		education,
+		employer,
 		date_range,
 		location,
 	} = front_matter;
@@ -40,7 +40,7 @@ pub fn ContentEducation(props: &ContentEducationProps) -> Html {
 		<ContentItem
 			main_header={title}
 			right_header={location}
-			subtitle={format!("{}<br>{}", education, date_range)}
+			subtitle={format!("{}<br>{}", employer, date_range)}
 			markdown={md}
 			border_color={props.border_color.clone()}
 		/>
