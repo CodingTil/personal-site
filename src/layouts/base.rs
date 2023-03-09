@@ -12,10 +12,10 @@ pub struct BaseLayoutProps {
 #[function_component]
 pub fn BaseLayout(props: &BaseLayoutProps) -> Html {
 	html! {
-		<div>
+		<>
 			<Header />
 			<div>{ for props.children.iter() }</div>
 			<Footer />
-		</div>
+		</>
 	}
 }

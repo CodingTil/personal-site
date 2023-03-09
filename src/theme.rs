@@ -21,6 +21,49 @@ impl Default for ThemeKind {
 
 impl ImplicitClone for ThemeKind {}
 
+impl ThemeKind {
+	pub fn current(&self) -> &Theme {
+		static LIGHT_THEME: Lazy<Theme> = Lazy::new(|| Theme {
+			background_primary: "#fff".to_string(),
+			background_secondary: "#f7fafc".to_string(),
+			background_tertiary: "#e2e8f0".to_string(),
+
+			foreground_primary: "#1e2024".to_string(),
+			foreground_secondary: "#12223d".to_string(),
+			foreground_tertiary: "#555e6d".to_string(),
+
+			other_primary: "#6ee7b7".to_string(),
+			other_secondary: "#10b981".to_string(),
+			other_tertiary: "#059669".to_string(),
+			other_quaternary: "#065f46".to_string(),
+
+			..Default::default()
+		});
+
+		static DARK_THEME: Lazy<Theme> = Lazy::new(|| Theme {
+			background_primary: "#0D2438".to_string(),
+			background_secondary: "#102C44".to_string(),
+			background_tertiary: "#1E3951".to_string(),
+
+			foreground_primary: "#fafdff".to_string(),
+			foreground_secondary: "#cfe3f8".to_string(),
+			foreground_tertiary: "#bdc1c5".to_string(),
+
+			other_primary: "#065f46".to_string(),
+			other_secondary: "#059669".to_string(),
+			other_tertiary: "#10b981".to_string(),
+			other_quaternary: "#6ee7b7".to_string(),
+
+			..Default::default()
+		});
+
+		match self {
+			ThemeKind::Dark => &DARK_THEME,
+			ThemeKind::Light => &LIGHT_THEME,
+		}
+	}
+}
+
 #[derive(Debug, Clone)]
 pub(crate) struct Theme {
 	pub rainbow_1: String,
@@ -76,49 +119,6 @@ impl Default for Theme {
 			other_secondary: "#000000".to_string(),
 			other_tertiary: "#000000".to_string(),
 			other_quaternary: "#000000".to_string(),
-		}
-	}
-}
-
-impl ThemeKind {
-	pub fn current(&self) -> &Theme {
-		static LIGHT_THEME: Lazy<Theme> = Lazy::new(|| Theme {
-			background_primary: "#fff".to_string(),
-			background_secondary: "#f7fafc".to_string(),
-			background_tertiary: "#e2e8f0".to_string(),
-
-			foreground_primary: "#1e2024".to_string(),
-			foreground_secondary: "#12223d".to_string(),
-			foreground_tertiary: "#555e6d".to_string(),
-
-			other_primary: "#6ee7b7".to_string(),
-			other_secondary: "#10b981".to_string(),
-			other_tertiary: "#059669".to_string(),
-			other_quaternary: "#065f46".to_string(),
-
-			..Default::default()
-		});
-
-		static DARK_THEME: Lazy<Theme> = Lazy::new(|| Theme {
-			background_primary: "#0D2438".to_string(),
-			background_secondary: "#102C44".to_string(),
-			background_tertiary: "#1E3951".to_string(),
-
-			foreground_primary: "#fafdff".to_string(),
-			foreground_secondary: "#cfe3f8".to_string(),
-			foreground_tertiary: "#bdc1c5".to_string(),
-
-			other_primary: "#065f46".to_string(),
-			other_secondary: "#059669".to_string(),
-			other_tertiary: "#10b981".to_string(),
-			other_quaternary: "#6ee7b7".to_string(),
-
-			..Default::default()
-		});
-
-		match self {
-			ThemeKind::Dark => &DARK_THEME,
-			ThemeKind::Light => &LIGHT_THEME,
 		}
 	}
 }
