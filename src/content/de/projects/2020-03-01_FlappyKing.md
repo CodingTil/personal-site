@@ -1,6 +1,6 @@
 ---
 slug: flappyking
-image: <img src="images/projects/FlappyKing/train.webp" alt="FlappyKing Training"/>
+image: <img loading="lazy" src="images/projects/FlappyKing/train.webp" alt="FlappyKing Training"/>
 title: FlappyKing
 color: bg-cyan-600
 tagline: NEAT Algorithmus lernt Flappy Bird zu spielen
@@ -14,7 +14,7 @@ Nach dem Abitur setzte ich mir das Ziel, eine KI von Grund auf zu implementieren
 
 Als erstes habe ich eine Kopie von Flappy Bird mit der [Lightweight Java Game Library](https://www.lwjgl.org/) implementiert.
 
-<img src="images/projects/FlappyKing/train.webp" alt="FlappyKing Training"/>
+<img loading="lazy" src="images/projects/FlappyKing/train.webp" alt="FlappyKing Training"/>
 
 Danach stieß ich jedoch auf Schwierigkeiten, als ich versuchte, die KI zu implementieren. Ich habe ein paar Ansätze ausprobiert (Reinforcement Learning, Supervised Learning), aber - selbst wenn ich sie richtig implementiert habe - war überhaupt kein Trainingsfortschritt sichtbar. Also habe ich das Projekt fallen gelassen und bin weitergezogen.
 
@@ -26,7 +26,7 @@ Heute besteht das Projekt aus verschiedenen Spielmodi wie:
 - Training
 - Spieler vs. Computer
 
-<img src="images/projects/FlappyKing/menu.webp" alt="FlappyKing Menu"/>
+<img loading="lazy" src="images/projects/FlappyKing/menu.webp" alt="FlappyKing Menu"/>
 
 # Implementation
 

@@ -62,6 +62,11 @@ fn App() -> Html {
 			background-color: {bg_1};
 			color: {fg_1};
 		}}
+
+		button, a {{
+			min-width: 48px;
+			min-height: 48px;
+		}}
 	"#,
 		bg_1 = theme.background_primary.clone(),
 		fg_1 = theme.foreground_primary.clone()

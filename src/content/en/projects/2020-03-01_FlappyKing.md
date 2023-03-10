@@ -1,6 +1,6 @@
 ---
 slug: flappyking
-image: <img src="images/projects/FlappyKing/train.webp" alt="FlappyKing Training"/>
+image: <img loading="lazy" src="images/projects/FlappyKing/train.webp" alt="FlappyKing Training"/>
 title: FlappyKing
 color: bg-cyan-600
 tagline: NEAT algorithm learning to play Flappy Bird
@@ -14,7 +14,7 @@ After graduating from highschool, I set myself the goal to implement and train a
 
 Firstly, I implemented a copy of Flappy Bird with the [Lightweight Java Game Library](https://www.lwjgl.org/).
 
-<img src="images/projects/FlappyKing/train.webp" alt="FlappyKing Training"/>
+<img loading="lazy" src="images/projects/FlappyKing/train.webp" alt="FlappyKing Training"/>
 
 After that however, I really struggeled implementing the AI. I tried a few approaches (Reinforcement Learning, Supervised Learning), but - even if I implemented them correctly - there was no training progress visible at all. So I kinda dropped the project and moved on.
 
@@ -26,7 +26,7 @@ Today the project consists of various gamemodes such as:
 - Training
 - Play vs. Computer
 
-<img src="images/projects/FlappyKing/menu.webp" alt="FlappyKing Menu"/>
+<img loading="lazy" src="images/projects/FlappyKing/menu.webp" alt="FlappyKing Menu"/>
 
 # Implementation
 
