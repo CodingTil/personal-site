@@ -1,6 +1,6 @@
 ---
 slug: simplechat
-image: <img src="images/projects/SimpleChat/chat.png" alt="SimpleChat UI"/>
+image: <img src="images/projects/SimpleChat/chat.webp" alt="SimpleChat UI"/>
 title: SimpleChat
 color: bg-green-600
 tagline: Simplified full-stack chat application
@@ -20,5 +20,5 @@ The frontend was developed using the [Nuxt.js Framework](https://nuxtjs.org/). I
 The backend uses the [Flask](https://flask.palletsprojects.com/en/1.1.x/) python library and stores messages in a [sqlite](https://sqlite.org/index.html) database.
 
 # Screenshots
-<img src="images/projects/SimpleChat/login.png" alt="SimpleChat Login Page"/>
-<img src="images/projects/SimpleChat/chat.png" alt="SimpleChat UI"/>
+<img src="images/projects/SimpleChat/login.webp" alt="SimpleChat Login Page"/>
+<img src="images/projects/SimpleChat/chat.webp" alt="SimpleChat UI"/>

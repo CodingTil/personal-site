@@ -20,11 +20,13 @@ pub fn ColorThemePicker() -> Html {
 	match this_theme {
 		ThemeKind::Light => html! {
 			<button class="btn outline-none focus:outline-none" onclick={switch_theme}>
+				<span class="sr-only">{"Switch to dark theme"}</span>
 				<i class="fa-solid fa-moon text-3xl text-indigo-900 hover:text-indigo-700" style="filter:drop-shadow(1px 1px 1px black)"></i>
 			</button>
 		},
 		ThemeKind::Dark => html! {
 			<button class="btn outline-none focus:outline-none" onclick={switch_theme}>
+				<span class="sr-only">{"Switch to light theme"}</span>
 				<i class="fa-solid fa-sun text-3xl text-yellow-300 hover:text-yellow-100" style="filter:drop-shadow(1px 1px 1px black)"></i>
 			</button>
 		},

@@ -21,6 +21,7 @@ pub fn LanguageSwitcher() -> Html {
 
 	html! {
 		<button onclick={switch_locale} class="text-foreground-secondary">
+			<span class="sr-only">{"Switch language to "}</span>
 			{other_locale_str}
 		</button>
 	}
