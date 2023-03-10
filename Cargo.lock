@@ -839,6 +839,7 @@ dependencies = [
  "once_cell",
  "serde",
  "stylist",
+ "web-sys",
  "yaml-front-matter",
  "yew",
  "yew-router",

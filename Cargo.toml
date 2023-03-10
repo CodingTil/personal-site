@@ -12,6 +12,7 @@ include_dir = "0.7.3"
 once_cell = "1.17.1"
 serde = "1.0.152"
 stylist = { version = "0.12.0", features = ["yew_integration", "parser"] }
+web-sys = { version = "0.3.61", features = ["ScrollToOptions", "Window"] }
 yaml-front-matter = "0.1.0"
 yew = { version = "0.20.0", features = ["csr"] }
 yew-router = "0.17.0"
