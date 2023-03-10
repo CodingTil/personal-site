@@ -150,6 +150,10 @@ pub fn Home() -> Html {
 									<i class="fa-brands fa-square-github"></i>
 									<span class="ml-2 whitespace-nowrap" >{"CodingTil"}</span>
 								</a>
+								<a href="https://linkedin.com/in/tilmohr" class="mx-2 flex items-center text-foreground-primary">
+									<i class="fa-brands fa-linkedin"></i>
+									<span class="ml-2 whitespace-nowrap" >{"tilmohr"}</span>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -229,6 +233,10 @@ pub fn Home() -> Html {
 				<a href="https://github.com/CodingTil" class="flex items-center text-foreground-primary">
 					<i class="fa-brands fa-square-github"></i>
 					<span class="ml-2">{"CodingTil"}</span>
+				</a>
+				<a href="https://linkedin.com/in/tilmohr" class="mx-2 flex items-center text-foreground-primary">
+					<i class="fa-brands fa-linkedin"></i>
+					<span class="ml-2 whitespace-nowrap" >{"tilmohr"}</span>
 				</a>
 			</section>
 		</div>
