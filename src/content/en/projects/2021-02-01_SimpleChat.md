@@ -20,5 +20,5 @@ The frontend was developed using the [Nuxt.js Framework](https://nuxtjs.org/). I
 The backend uses the [Flask](https://flask.palletsprojects.com/en/1.1.x/) python library and stores messages in a [sqlite](https://sqlite.org/index.html) database.
 
 # Screenshots
-<img src="images/projects/SimpleChat/menu.png" alt="SimpleChat Menu"/>
+<img src="images/projects/SimpleChat/login.png" alt="SimpleChat Login Page"/>
 <img src="images/projects/SimpleChat/chat.png" alt="SimpleChat UI"/>

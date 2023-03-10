@@ -1,7 +1,5 @@
 use core::fmt::Display;
-use std::ops::Deref;
 
-use once_cell::sync::Lazy;
 use stylist::yew::styled_component;
 use yew::html::ImplicitClone;
 use yew::prelude::*;
@@ -12,15 +10,6 @@ use std::default::Default;
 pub(crate) enum Localization {
 	DE,
 	EN,
-}
-
-impl Localization {
-	pub fn get_path(&self) -> &str {
-		match self {
-			Localization::DE => "de",
-			Localization::EN => "en",
-		}
-	}
 }
 
 impl Default for Localization {

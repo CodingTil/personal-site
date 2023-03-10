@@ -1,9 +1,4 @@
-use std::borrow::Borrow;
-
-use stylist::{
-	yew::{styled_component, Global},
-	Style,
-};
+use stylist::yew::{styled_component, Global};
 use yew::prelude::*;
 use yew_router::prelude::*;
 

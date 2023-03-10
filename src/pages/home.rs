@@ -1,6 +1,5 @@
 use std::borrow::Cow;
 
-use stylist::style;
 use stylist::yew::styled_component;
 use yew::prelude::*;
 
@@ -9,7 +8,6 @@ use comrak::{format_html, parse_document, Arena, ComrakOptions};
 use include_dir::{include_dir, Dir};
 
 use crate::localization::{use_localization, Localization};
-use crate::theme::use_theme;
 
 use crate::safehtml::SafeHtml;
 
@@ -20,7 +18,6 @@ use crate::components::project::ProjectCard;
 struct Translations {
 	projects: Cow<'static, str>,
 	more: Cow<'static, str>,
-	experience: Cow<'static, str>,
 	teaching: Cow<'static, str>,
 	education: Cow<'static, str>,
 }
@@ -28,7 +25,6 @@ struct Translations {
 const EN_TRANSLATIONS: Translations = Translations {
 	projects: Cow::Borrowed("Projects"),
 	more: Cow::Borrowed("More About Me"),
-	experience: Cow::Borrowed("Experience"),
 	teaching: Cow::Borrowed("Teaching"),
 	education: Cow::Borrowed("Education"),
 };
@@ -36,7 +32,6 @@ const EN_TRANSLATIONS: Translations = Translations {
 const DE_TRANSLATIONS: Translations = Translations {
 	projects: Cow::Borrowed("Projekte"),
 	more: Cow::Borrowed("Mehr Über Mich"),
-	experience: Cow::Borrowed("Erfahrung"),
 	teaching: Cow::Borrowed("Lehre"),
 	education: Cow::Borrowed("Bildung"),
 };
@@ -64,16 +59,7 @@ static CONTENT_EN_TEACHING_DIR: Dir = include_dir!("src/content/en/teaching/");
 
 #[styled_component]
 pub fn Home() -> Html {
-	let theme = use_theme();
 	let localization = use_localization();
-
-	let intro_border_css = style!(
-		r#"
-		border-color: ${bg};
-		"#,
-		bg = theme.foreground_tertiary.clone(),
-	)
-	.unwrap();
 
 	let translation = match localization.get() {
 		Localization::EN => &EN_TRANSLATIONS,
@@ -191,7 +177,7 @@ pub fn Home() -> Html {
 			/* More About Me */
 			<section id="more_about_me" class={String::from("bg-foreground-tertiary text-background-primary ") + &cv_section_css}>
 				<div class={section_box_css.clone()}>
-					<div class={String::from("border-background-primary ") + &section_title_css}>
+					<div class={String::from("border-background-primary mb-3 ") + &section_title_css}>
 						{ translation.more.clone() }
 					</div>
 					<SafeHtml html={more_html} />
