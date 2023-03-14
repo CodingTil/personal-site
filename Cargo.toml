@@ -3,8 +3,6 @@ name = "personal-site"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 comrak = "0.16.0"
 gloo-utils = "0.1.6"
@@ -12,10 +10,16 @@ include_dir = "0.7.3"
 once_cell = "1.17.1"
 serde = "1.0.152"
 stylist = { version = "0.12.0", features = ["yew_integration", "parser"] }
-web-sys = { version = "0.3.61", features = ["ScrollToOptions", "Window"] }
+web-sys = { version = "0.3.61", features = ["ScrollToOptions", "Window", "Element", "HtmlCanvasElement", "ResizeObserver", "HtmlElement"] }
 yaml-front-matter = "0.1.0"
 yew = { version = "0.20.0", features = ["csr"] }
 yew-router = "0.17.0"
+fractal_rust = { git = "https://github.com/CodingTil/fractal_rust", branch = "main" }
+pollster = "0.3.0"
+wasm-bindgen-futures = "0.4.34"
+winit = "0.28.2"
+wasm-bindgen = "0.2.84"
+js-sys = "0.3.61"
 
 [profile.release]
 # less code to include into binary

@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <title>Fractal | Rust</title>
+    <style>
+        html {
+            min-height: 100%;
+            position: relative;
+        }
+
+        body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        #wasm-block {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+
+<link rel="preload" href="/public/project_code/fractal/fractal_rust-90e1cbafa6dae3d2_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/public/project_code/fractal/fractal_rust-90e1cbafa6dae3d2.js"></head>
+
+<body>
+    <div id="container">
+        <canvas id="wasm-block"></canvas>
+    </div>
+
+
+
+
+
+
+<script type="module">import init from '/public/project_code/fractal/fractal_rust-90e1cbafa6dae3d2.js';init('/public/project_code/fractal/fractal_rust-90e1cbafa6dae3d2_bg.wasm');</script></body></html>

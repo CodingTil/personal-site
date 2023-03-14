@@ -82,6 +82,7 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 	let to_route = match slug.as_str() {
 		"flappyking" => Route::FlappyKing,
 		"simplechat" => Route::SimpleChat,
+		"fractal" => Route::Fractal,
 		_ => panic!("Invalid slug: {}", slug),
 	};
 

@@ -29,7 +29,7 @@ fn App() -> Html {
 	rainbow_css += format!(".text-rainbow-6 {{ color: {}; }} .bg-rainbow-6 {{ background-color: {}; }} .border-rainbow-6 {{ border-color: {}; }} ", theme.rainbow_6.clone(), theme.rainbow_6.clone(), theme.rainbow_6.clone()).as_str();
 
 	let mut foreground_css = "".to_owned();
-	foreground_css += format!(".text-foreground-primary {{ color: {}; }} .bg-foreground-primary {{ background-color: {}; }} .border-foreground-primary {{ border-color: {}; }} ", theme.foreground_primary.clone(), theme.foreground_primary.clone(), theme.foreground_primary.clone()).as_str();
+	foreground_css += format!(".text-foreground-primary {{ color: {}; }} .bg-foreground-primary {{ background-color: {}; }} .border-foreground-primary {{ border-color: {}; }} .fill-foreground-primary {{ fill: {}; }} ", theme.foreground_primary.clone(), theme.foreground_primary.clone(), theme.foreground_primary.clone(), theme.foreground_primary.clone()).as_str();
 	foreground_css += format!(".text-foreground-secondary {{ color: {}; }} .bg-foreground-secondary {{ background-color: {}; }} .border-foreground-secondary {{ border-color: {}; }} ", theme.foreground_secondary.clone(), theme.foreground_secondary.clone(), theme.foreground_secondary.clone()).as_str();
 	foreground_css += format!(".text-foreground-tertiary {{ color: {}; }} .bg-foreground-tertiary {{ background-color: {}; }} .border-foreground-tertiary {{ border-color: {}; }} ", theme.foreground_tertiary.clone(), theme.foreground_tertiary.clone(), theme.foreground_tertiary.clone()).as_str();
 
