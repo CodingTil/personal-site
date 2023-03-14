@@ -24,7 +24,7 @@ filters: [rust, webassembly, gpu, shader, wasm]
 </div>
 
 # Overview
-<iframe src="http://192.168.178.33:8080/public/project_code/fractal/index.html" title="Fractal" class="w-full p-2.5 pointer-events-none" style="aspect-ratio: 16 / 9"></iframe>
+<iframe src="/public/project_code/fractal/index.html" title="Fractal" class="w-full p-2.5 pointer-events-none" style="aspect-ratio: 16 / 9"></iframe>
 <i>If nothing is being displayed, it is possible that your browser does not support WebAssembly or GPU rendering has been disabled.</i>
 
 This small program is written in [Rust](https://www.rust-lang.org/), compiled to [WebAssembly](https://webassembly.org/), and uses the GPU ([wgpu](https://wgpu.rs/)) to render the fractal.
