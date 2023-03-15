@@ -114,7 +114,7 @@ pub fn Home() -> Html {
 		Localization::EN => &CONTENT_EN_TEACHING_DIR,
 		Localization::DE => &CONTENT_DE_TEACHING_DIR,
 	};
-	let teaching_border_color_offset = teaching_md_dir.files().count() + 1;
+	let teaching_border_color_offset = education_md_dir.files().count();
 	let mut teaching_md_files = teaching_md_dir.files().collect::<Vec<_>>();
 	teaching_md_files.sort_by(|a, b| b.path().cmp(a.path()));
 	let teaching_md_contents = teaching_md_files
