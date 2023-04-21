@@ -10,13 +10,13 @@ location: Aachen, Germany
 	<div class="cell">
 		<h4>Electives</h4>
 		<ul>
-			<li>Compiler Construction<sup>**</sup></li>
-			<li>Implementation of Databases<sup>**</sup></li>
-			<li>Introduction to Data Science<sup>**</sup></li>
-			<li>Machine Learning<sup>**</sup></li>
-			<li>Physically-Based Animation<sup>**</sup></li>
-			<li class="italic text-foreground-tertiary">unknown</li>
-			<li class="italic text-foreground-tertiary">unknown</li>
+			<li>Compiler Construction</li>
+			<li>Implementation of Databases</li>
+			<li>Introduction to Data Science</li>
+			<li>Machine Learning</li>
+			<li>Physically-Based Animation</li>
+			<li>The Logic of Knowledge Bases<sup>**</sup></li>
+			<li>Fixpoints and Induction in Logic and Computer Science<sup>**</sup></li>
 			<li class="italic text-foreground-tertiary">unknown</li>
 			<li class="italic text-foreground-tertiary">unknown</li>
 			<li class="italic text-foreground-tertiary">unknown</li>
@@ -38,9 +38,9 @@ location: Aachen, Germany
 	<hr>
 	<div class="cell-non-md">
 		<ul>
-			<li>Operations Research 1<sup>**</sup></li>
-			<li class="italic text-foreground-tertiary">unknown</li>
-			<li class="italic text-foreground-tertiary">unknown</li>
+			<li>Operations Research 1</li>
+			<li>Operations Research 2<sup>**</sup></li>
+			<li>Practical Optimization with Modeling Languages<sup>**</sup></li>
 		</ul>
 	</div>
 </div>

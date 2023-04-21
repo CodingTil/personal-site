@@ -10,13 +10,13 @@ location: Aachen, Deutschland
 	<div class="cell">
 		<h4>Wahlflicht</h4>
 		<ul>
-			<li>Compilerbau<sup>**</sup></li>
-			<li>Implementation of Databases<sup>**</sup></li>
-			<li>Introduction to Data Science<sup>**</sup></li>
-			<li>Machine Learning<sup>**</sup></li>
-			<li>Physikalisch-Basierte Animation<sup>**</sup></li>
-			<li class="italic text-foreground-tertiary">unbekannt</li>
-			<li class="italic text-foreground-tertiary">unbekannt</li>
+			<li>Compilerbau</li>
+			<li>Implementation of Databases</li>
+			<li>Introduction to Data Science</li>
+			<li>Machine Learning</li>
+			<li>Physikalisch-Basierte Animation</li>
+			<li>The Logic of Knowledge Bases<sup>**</sup></li>
+			<li>Fixpoints and Induction in Logic and Computer Science<sup>**</sup></li>
 			<li class="italic text-foreground-tertiary">unbekannt</li>
 			<li class="italic text-foreground-tertiary">unbekannt</li>
 			<li class="italic text-foreground-tertiary">unbekannt</li>
@@ -38,9 +38,9 @@ location: Aachen, Deutschland
 	<hr>
 	<div class="cell-non-md">
 		<ul>
-			<li>Operations Research 1<sup>**</sup></li>
-			<li class="italic text-foreground-tertiary">unbekannt</li>
-			<li class="italic text-foreground-tertiary">unbekannt</li>
+			<li>Operations Research 1</li>
+			<li>Operations Research 2<sup>**</sup></li>
+			<li>Praktische Optimierung mit Modellierungssprachen<sup>**</sup></li>
 		</ul>
 	</div>
 </div>
