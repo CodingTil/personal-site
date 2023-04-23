@@ -24,18 +24,18 @@ impl ImplicitClone for ThemeKind {}
 impl ThemeKind {
 	pub fn current(&self) -> &Theme {
 		static LIGHT_THEME: Lazy<Theme> = Lazy::new(|| Theme {
-			background_primary: "#fff".to_string(),
-			background_secondary: "#f7fafc".to_string(),
-			background_tertiary: "#e2e8f0".to_string(),
+			background_primary: "#FFFFFF".to_string(),
+			background_secondary: "#F0F4F8".to_string(),
+			background_tertiary: "#E2ECF3".to_string(),
 
-			foreground_primary: "#1e2024".to_string(),
-			foreground_secondary: "#12223d".to_string(),
-			foreground_tertiary: "#555e6d".to_string(),
+			foreground_primary: "#0D2438".to_string(),
+			foreground_secondary: "#1E3951".to_string(),
+			foreground_tertiary: "#5B7387".to_string(),
 
-			other_primary: "#6ee7b7".to_string(),
-			other_secondary: "#10b981".to_string(),
-			other_tertiary: "#059669".to_string(),
-			other_quaternary: "#065f46".to_string(),
+			other_primary: "#076548".to_string(),
+			other_secondary: "#07966B".to_string(),
+			other_tertiary: "#16C99B".to_string(),
+			other_quaternary: "#7AEDC9".to_string(),
 
 			..Default::default()
 		});
