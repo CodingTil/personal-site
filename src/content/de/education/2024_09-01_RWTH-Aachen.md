@@ -8,7 +8,7 @@ location: Aachen, Deutschland
 	<h3 class="min-w-full">Grundstudium</h3>
 	<hr>
 	<div class="cell">
-		<h4>Wahlflicht</h4>
+		<h4>Wahlpflicht</h4>
 		<ul>
 			<li>Compilerbau</li>
 			<li>Implementation of Databases</li>

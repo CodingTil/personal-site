@@ -43,7 +43,7 @@ location: Aachen, Deutschland
 		</ul>
 	</div>
 	<div class="cell">
-		<h4>Wahlplicht</h4>
+		<h4>Wahlpflicht</h4>
 		<ul>
 			<li>Einführung in High-Performance Computing</li>
 			<li>Einführung in die künstliche Intelligenz</li>
