@@ -26,7 +26,7 @@ location: Aachen, Deutschland
 		<h4>Sonstige Studienleistungen</h4>
 		<ul>
 			<li>Praktikum<sup>**</sup></li>
-			<li>Seminar<sup>**</sup></li>
+			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a><sup>**</sup></li>
 			<li>Mündliches Schwerpunktkolloquium<sup>**</sup></li>
 			<li>Masterarbeit<sup>**</sup></li>
 		</ul>
