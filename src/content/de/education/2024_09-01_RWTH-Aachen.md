@@ -15,17 +15,16 @@ location: Aachen, Deutschland
 			<li>Introduction to Data Science</li>
 			<li>Machine Learning</li>
 			<li>Physikalisch-Basierte Animation</li>
-			<li>The Logic of Knowledge Bases<sup>**</sup></li>
-			<li>Fixpoints and Induction in Logic and Computer Science<sup>**</sup></li>
-			<li class="italic text-foreground-tertiary">unbekannt</li>
-			<li class="italic text-foreground-tertiary">unbekannt</li>
-			<li class="italic text-foreground-tertiary">unbekannt</li>
+			<li>The Logic of Knowledge Bases</li>
+			<li>Fixpoints and Induction in Logic and Computer Science</li>
+			<li>Image Processing and Computer Vision<sup>**</sup></li>
+			<li>Information Retrieval and Text Mining<sup>**</sup></li>
 		</ul>
 	</div>
 	<div class="cell">
 		<h4>Sonstige Studienleistungen</h4>
 		<ul>
-			<li>Praktikum<sup>**</sup></li>
+			<li>Praktikum</li>
 			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a><sup>**</sup></li>
 			<li>Mündliches Schwerpunktkolloquium<sup>**</sup></li>
 			<li>Masterarbeit<sup>**</sup></li>
@@ -40,7 +39,7 @@ location: Aachen, Deutschland
 		<ul>
 			<li>Operations Research 1</li>
 			<li>Operations Research 2<sup>**</sup></li>
-			<li>Praktische Optimierung mit Modellierungssprachen<sup>**</sup></li>
+			<li>Praktische Optimierung mit Modellierungssprachen</li>
 		</ul>
 	</div>
 </div>

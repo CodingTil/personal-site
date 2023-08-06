@@ -15,20 +15,19 @@ location: Aachen, Germany
 			<li>Introduction to Data Science</li>
 			<li>Machine Learning</li>
 			<li>Physically-Based Animation</li>
-			<li>The Logic of Knowledge Bases<sup>**</sup></li>
-			<li>Fixpoints and Induction in Logic and Computer Science<sup>**</sup></li>
-			<li class="italic text-foreground-tertiary">unknown</li>
-			<li class="italic text-foreground-tertiary">unknown</li>
-			<li class="italic text-foreground-tertiary">unknown</li>
+			<li>The Logic of Knowledge Bases</li>
+			<li>Fixpoints and Induction in Logic and Computer Science</li>
+			<li>Image Processing and Computer Vision<sup>**</sup></li>
+			<li>Information Retrieval and Text Mining<sup>**</sup></li>
 		</ul>
 	</div>
 	<div class="cell">
 		<h4>Other Assessments</h4>
 		<ul>
-			<li>Internship<sup>**</sup></li>
+			<li>Internship</li>
 			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a><sup>**</sup></li>
 			<li>Depth Oral Colloquium<sup>**</sup></li>
-			<li>Masters's Thesis<sup>**</sup></li>
+			<li>Master's Thesis<sup>**</sup></li>
 		</ul>
 	</div>
 </div>
@@ -40,7 +39,7 @@ location: Aachen, Germany
 		<ul>
 			<li>Operations Research 1</li>
 			<li>Operations Research 2<sup>**</sup></li>
-			<li>Practical Optimization with Modeling Languages<sup>**</sup></li>
+			<li>Practical Optimization with Modeling Languages</li>
 		</ul>
 	</div>
 </div>
