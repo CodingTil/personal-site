@@ -25,7 +25,7 @@ location: Aachen, Germany
 		<h4>Other Assessments</h4>
 		<ul>
 			<li>Internship</li>
-			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a><sup>**</sup></li>
+			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a></li>
 			<li>Depth Oral Colloquium<sup>**</sup></li>
 			<li>Master's Thesis<sup>**</sup></li>
 		</ul>
@@ -38,7 +38,7 @@ location: Aachen, Germany
 	<div class="cell-non-md">
 		<ul>
 			<li>Operations Research 1</li>
-			<li>Operations Research 2<sup>**</sup></li>
+			<li>Operations Research 2</li>
 			<li>Practical Optimization with Modeling Languages</li>
 		</ul>
 	</div>

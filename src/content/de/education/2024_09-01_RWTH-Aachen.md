@@ -25,7 +25,7 @@ location: Aachen, Deutschland
 		<h4>Sonstige Studienleistungen</h4>
 		<ul>
 			<li>Praktikum</li>
-			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a><sup>**</sup></li>
+			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a></li>
 			<li>Mündliches Schwerpunktkolloquium<sup>**</sup></li>
 			<li>Masterarbeit<sup>**</sup></li>
 		</ul>
@@ -38,7 +38,7 @@ location: Aachen, Deutschland
 	<div class="cell-non-md">
 		<ul>
 			<li>Operations Research 1</li>
-			<li>Operations Research 2<sup>**</sup></li>
+			<li>Operations Research 2</li>
 			<li>Praktische Optimierung mit Modellierungssprachen</li>
 		</ul>
 	</div>
