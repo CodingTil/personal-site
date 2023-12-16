@@ -24,6 +24,14 @@ pub struct ProjectMetadata {
 	pub date_range: String,
 	pub skills: Vec<String>,
 	pub filters: Vec<String>,
+	pub coauthors: Option<Vec<Coauthor>>,
+	pub report: Option<String>,
+}
+
+#[derive(Deserialize)]
+pub struct Coauthor {
+	pub name: String,
+	pub url: String,
 }
 
 #[derive(Debug, PartialEq, Properties)]
@@ -48,6 +56,8 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		date_range: _,
 		skills: _,
 		filters: _,
+		coauthors: _,
+		report: _,
 	} = front_matter;
 
 	let size_css = style!(
@@ -83,6 +93,8 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		"flappyking" => Route::FlappyKing,
 		"simplechat" => Route::SimpleChat,
 		"fractal" => Route::Fractal,
+		"eiuie" => Route::EIUIE,
+		"py_css" => Route::PYCSS,
 		_ => panic!("Invalid slug: {}", slug),
 	};
 
@@ -131,6 +143,8 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 		date_range,
 		skills: _,
 		filters: _,
+		coauthors,
+		report,
 	} = front_matter;
 
 	let arena = Arena::new();
@@ -179,6 +193,18 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 		margin-left: auto;
 		margin-right: auto;
 		max-width: 100%;
+		overflow: hidden;
+		padding-left: 0px;
+		padding-right: 0.5rem;
+	}
+
+	iframe {
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 100%;
+		min-width: 100%;
+		aspect-ratio: 16 / 9;
 		overflow: hidden;
 		padding-left: 0px;
 		padding-right: 0.5rem;
@@ -296,6 +322,38 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 									{"git"}
 								</span>
 							</a>
+							if let Some(ca_list) = coauthors {
+								if ca_list.len() > 0 {
+									<div class="mx-2 flex items-center text-foreground-primary">
+										<i class="fa-solid fa-users"></i>
+										<span class="ml-2 whitespace-nowrap">
+											{"Coauthors: "}
+										</span>
+									</div>
+									<div class="ml-7 mx-2 -mt-2 flex flex-row flex-wrap">
+										{
+											for ca_list.into_iter().map(|ca| {
+												html! {
+													<a href={ca.url.clone()} class="flex items-center text-foreground-primary">
+														<span class="whitespace-nowrap">
+															{ca.name.clone()}
+														</span>
+														<i class="ml-2 fa-solid fa-arrow-up-right-from-square"></i>
+													</a>
+												}
+											})
+										}
+									</div>
+								}
+							}
+							if let Some(report_url) = report {
+								<a href={report_url.clone()} class="mx-2 -mt-2 flex items-center text-foreground-primary">
+									<i class="fa-solid fa-file-pdf"></i>
+									<span class="ml-2 whitespace-nowrap">
+										{"Report"}
+									</span>
+								</a>
+							}
 						</div>
 					</div>
 				</div>

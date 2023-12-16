@@ -17,8 +17,8 @@ location: Aachen, Deutschland
 			<li>Physikalisch-Basierte Animation</li>
 			<li>The Logic of Knowledge Bases</li>
 			<li>Fixpoints and Induction in Logic and Computer Science</li>
-			<li>Image Processing and Computer Vision<sup>**</sup></li>
-			<li>Information Retrieval and Text Mining<sup>**</sup></li>
+			<li><a href="/eiuie" class="no-underline"><span>Image Processing and Computer Vision</span><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
+			<li><a href="/py_css" class="no-underline"><span>Information Retrieval and Text Mining</span><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
 		</ul>
 	</div>
 	<div class="cell">
