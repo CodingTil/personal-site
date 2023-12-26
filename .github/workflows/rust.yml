@@ -1,0 +1,27 @@
+on: push
+
+name: Build and test
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Trunk
+        run: cargo install --locked trunk
+      - name: Build
+        run: trunk build --release --verbose
+
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Clippy
+        run: cargo clippy --all-features -- -D warnings
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Format
+        run: cargo fmt --all -- --check

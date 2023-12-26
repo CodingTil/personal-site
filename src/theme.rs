@@ -7,16 +7,11 @@ use yew::prelude::*;
 
 use std::default::Default;
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub(crate) enum ThemeKind {
+	#[default]
 	Dark,
 	Light,
-}
-
-impl Default for ThemeKind {
-	fn default() -> Self {
-		ThemeKind::Dark
-	}
 }
 
 impl ImplicitClone for ThemeKind {}
@@ -163,7 +158,7 @@ pub(crate) struct ThemeProviderProps {
 
 #[styled_component]
 pub(crate) fn ThemeProvider(props: &ThemeProviderProps) -> Html {
-	let theme_kind = use_state(|| ThemeKind::default());
+	let theme_kind = use_state(ThemeKind::default);
 
 	let theme_ctx = ThemeContext::new(theme_kind);
 

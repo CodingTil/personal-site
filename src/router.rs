@@ -3,10 +3,10 @@ use yew_router::prelude::*;
 
 use crate::pages::home::Home;
 use crate::pages::page_not_found::PageNotFound;
-use crate::pages::projects::eiuie::EIUIE;
+use crate::pages::projects::eiuie::Eiuie;
 use crate::pages::projects::flappyking::FlappyKing;
 use crate::pages::projects::fractal::Fractal;
-use crate::pages::projects::py_css::PYCSS;
+use crate::pages::projects::py_css::Pycss;
 use crate::pages::projects::simplechat::SimpleChat;
 
 #[derive(Clone, Routable, PartialEq)]
@@ -20,9 +20,9 @@ pub enum Route {
 	#[at("/fractal")]
 	Fractal,
 	#[at("/eiuie")]
-	EIUIE,
+	Eiuie,
 	#[at("/py_css")]
-	PYCSS,
+	Pycss,
 	#[not_found]
 	#[at("/404")]
 	NotFound,
@@ -44,8 +44,8 @@ pub fn switch(route: Route) -> Html {
 		Route::FlappyKing => html! { <FlappyKing /> },
 		Route::SimpleChat => html! { <SimpleChat /> },
 		Route::Fractal => html! { <Fractal /> },
-		Route::EIUIE => html! { <EIUIE /> },
-		Route::PYCSS => html! { <PYCSS /> },
+		Route::Eiuie => html! { <Eiuie /> },
+		Route::Pycss => html! { <Pycss /> },
 		Route::NotFound => html! { <PageNotFound /> },
 	}
 }

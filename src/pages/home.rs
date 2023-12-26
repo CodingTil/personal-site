@@ -77,8 +77,8 @@ pub fn Home() -> Html {
 	let arena = Arena::new();
 	let mut options = ComrakOptions::default();
 	options.render.unsafe_ = true;
-	let intro_root = parse_document(&arena, &intro_md_str, &options);
-	let more_root = parse_document(&arena, &more_md_str, &options);
+	let intro_root = parse_document(&arena, intro_md_str, &options);
+	let more_root = parse_document(&arena, more_md_str, &options);
 	let mut intro_html_vec = vec![];
 	let mut more_html_vec = vec![];
 	format_html(intro_root, &options, &mut intro_html_vec).unwrap();
@@ -95,7 +95,7 @@ pub fn Home() -> Html {
 	let education_md_contents = education_md_files
 		.iter()
 		.map(|file| file.contents_utf8().unwrap())
-		.map(|s| String::from(s))
+		.map(String::from)
 		.collect::<Vec<String>>();
 
 	let projects_md_dir = match localization.get() {
@@ -107,7 +107,7 @@ pub fn Home() -> Html {
 	let projects_md_contents = projects_md_files
 		.iter()
 		.map(|file| file.contents_utf8().unwrap())
-		.map(|s| String::from(s))
+		.map(String::from)
 		.collect::<Vec<String>>();
 
 	let teaching_md_dir = match localization.get() {
@@ -120,7 +120,7 @@ pub fn Home() -> Html {
 	let teaching_md_contents = teaching_md_files
 		.iter()
 		.map(|file| file.contents_utf8().unwrap())
-		.map(|s| String::from(s))
+		.map(String::from)
 		.collect::<Vec<String>>();
 
 	let cv_section_css = String::from("container mx-0 my-0 w-screen min-w-full");

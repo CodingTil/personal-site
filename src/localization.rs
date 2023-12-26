@@ -6,16 +6,11 @@ use yew::prelude::*;
 
 use std::default::Default;
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub(crate) enum Localization {
 	DE,
+	#[default]
 	EN,
-}
-
-impl Default for Localization {
-	fn default() -> Self {
-		Localization::EN
-	}
 }
 
 impl Display for Localization {
@@ -61,7 +56,7 @@ pub(crate) struct LocalizationProviderProps {
 
 #[styled_component]
 pub(crate) fn LocalizationProvider(props: &LocalizationProviderProps) -> Html {
-	let localization = use_state(|| Localization::default());
+	let localization = use_state(Localization::default);
 
 	let localization_ctx = LocalizationContext::new(localization);
 

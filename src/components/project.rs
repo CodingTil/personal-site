@@ -93,8 +93,8 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		"flappyking" => Route::FlappyKing,
 		"simplechat" => Route::SimpleChat,
 		"fractal" => Route::Fractal,
-		"eiuie" => Route::EIUIE,
-		"py_css" => Route::PYCSS,
+		"eiuie" => Route::Eiuie,
+		"py_css" => Route::Pycss,
 		_ => panic!("Invalid slug: {}", slug),
 	};
 
@@ -323,7 +323,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 								</span>
 							</a>
 							if let Some(ca_list) = coauthors {
-								if ca_list.len() > 0 {
+								if !ca_list.is_empty() {
 									<div class="mx-2 flex items-center text-foreground-primary">
 										<i class="fa-solid fa-users"></i>
 										<span class="ml-2 whitespace-nowrap">

@@ -5,7 +5,7 @@ use crate::components::project::ProjectPost;
 use crate::localization::{use_localization, Localization};
 
 #[function_component]
-pub fn EIUIE() -> Html {
+pub fn Eiuie() -> Html {
 	let localization = use_localization();
 
 	let md_content = match localization.get() {

@@ -5,7 +5,7 @@ use crate::components::project::ProjectPost;
 use crate::localization::{use_localization, Localization};
 
 #[function_component]
-pub fn PYCSS() -> Html {
+pub fn Pycss() -> Html {
 	let localization = use_localization();
 
 	let md_content = match localization.get() {
