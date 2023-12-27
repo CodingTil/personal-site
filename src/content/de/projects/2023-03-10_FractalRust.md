@@ -24,7 +24,7 @@ filters: [rust, webassembly, gpu, shader, wasm]
 </div>
 
 # Übersicht
-<iframe src="/public/project_code/fractal/index.html" title="Fractal" class="w-full p-2.5 pointer-events-none" style="aspect-ratio: 16 / 9"></iframe>
+<iframe src="/public/project_code/fractal_rust/index.html" title="Fractal" class="w-full p-2.5 pointer-events-none" style="aspect-ratio: 16 / 9"></iframe>
 <i>Wenn nichts angezeigt wird, ist es wahrscheinlich, dass entweder Ihr Browser WebAssembly nicht unterstützt oder das GPU-Rendering deaktiviert ist.</i>
 
 Dieses kleine Programm ist in der Programmiersprache [Rust](https://www.rust-lang.org/) geschrieben, zu [WebAssembly](https://webassembly.org/) kompiliert und nutzt die GPU ([wgpu](https://wgpu.rs/)) zur Darstellung des Fraktals.

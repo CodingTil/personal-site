@@ -1,0 +1,3 @@
+[submodule "fractal_rust"]
+	path = fractal_rust
+	url = git@github.com:CodingTil/fractal_rust.git
