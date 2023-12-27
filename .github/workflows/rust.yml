@@ -13,8 +13,8 @@ jobs:
         run: cargo install --locked trunk
       - name: Clean
         run: cargo clean
-#       - name: Build
-#         run: trunk build --release --verbose
+      - name: Build
+        run: trunk build --release --verbose
 
   clippy:
     runs-on: ubuntu-latest
