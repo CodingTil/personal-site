@@ -195,7 +195,7 @@ pub fn Home() -> Html {
 			<section id="project_cards" class={String::from("bg-background-tertiary text-foreground-primary ") + &cv_section_css}>
 				<div class={section_box_css.clone()}>
 					<div class={String::from("border-foreground-secondary ") + &section_title_css}>
-						{ translation.projects.to_uppercase().clone() }
+						{ translation.projects.clone() }
 					</div>
 					<div class="flex flex-row flex-wrap justify-around p-5">
 						{
