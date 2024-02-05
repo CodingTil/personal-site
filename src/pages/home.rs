@@ -1,5 +1,6 @@
 use std::borrow::Cow;
 
+use stylist::style;
 use stylist::yew::styled_component;
 use yew::prelude::*;
 
@@ -128,33 +129,63 @@ pub fn Home() -> Html {
 		"flex flex-col justify-center items-center py-8 px-4 xl:px-0 mx-0 xl:mx-auto max-w-7xl",
 	);
 	let section_title_css = String::from(
-		"inline-block px-6 py-4 w-min font-bold text-xl whitespace-nowrap border border-solid",
+		"inline-block px-6 py-4 w-min font-extrabold text-4xl whitespace-nowrap underline",
 	);
+
+	let tilmohr_fontsize_css = style!(
+		r#"
+		font-size: 18vw;
+
+		@media (min-width: 1280px) {
+			font-size: 15em;
+		}
+
+		@media (max-width: 350px) {
+			font-size: 16vw;
+		}
+	"#
+	)
+	.unwrap();
 
 	html! {
 		<div class="min-w-full">
 			/* Intro */
-			<section id="intro" class={cv_section_css.clone()}>
-				<div class={section_box_css.clone()}>
-					<div class="flex flex-row justify-center items-center flex-wrap xl:flex-nowrap" >
-						<div class="border-r-0 xl:border-r-2 border-solid pr-2 border-foreground-tertiary">
-							<SafeHtml html={intro_html} />
+			<section id="intro" class={String::from("-mt-20 ") + &cv_section_css}>
+				<div class="min-h-screen pt-28 pb-8 px-4 flex flex-col justify-center items-center flex-wrap place-content-between xl:px-0 mx-0 xl:mx-auto max-w-7xl">
+					<span class={String::from("text-rainbow-1 text-bold ") + tilmohr_fontsize_css.get_class_name()}>{"TIL MOHR"}</span>
+					<div class="grow text-center pt-8">
+						<SafeHtml html={intro_html} />
+					</div>
+					<div class="pt-8 border-foreground-tertiary">
+						<div class="flex flex-row xl:flex-col flex-wrap justify-center xl:justify-start">
+							<a href="mailto:me@tilmohr.com" class="mx-2 flex items-center text-foreground-primary">
+								<i class="fa-solid fa-envelope text-[#EBCB8B]"></i>
+								<span class="ml-2 whitespace-nowrap">{"me@tilmohr.com"}</span>
+							</a>
+							<a href="https://github.com/CodingTil" class="mx-2 flex items-center text-foreground-primary">
+								<i class="fa-brands fa-square-github"></i>
+								<span class="ml-2 whitespace-nowrap" >{"CodingTil"}</span>
+							</a>
+							<a href="https://linkedin.com/in/tilmohr" class="mx-2 flex items-center text-foreground-primary">
+								<i class="fa-brands fa-linkedin text-[#0077B5]"></i>
+								<span class="ml-2 whitespace-nowrap" >{"tilmohr"}</span>
+							</a>
 						</div>
-						<div class="border-t-2 xl:border-t-0 border-solid p-2 xl:pr-0 border-foreground-tertiary">
-							<div class="flex flex-row xl:flex-col flex-wrap justify-center xl:justify-start">
-								<a href="mailto:me@tilmohr.com" class="mx-2 flex items-center text-foreground-primary">
-									<i class="fa-solid fa-envelope"></i>
-									<span class="ml-2 whitespace-nowrap">{"me@tilmohr.com"}</span>
-								</a>
-								<a href="https://github.com/CodingTil" class="mx-2 flex items-center text-foreground-primary">
-									<i class="fa-brands fa-square-github"></i>
-									<span class="ml-2 whitespace-nowrap" >{"CodingTil"}</span>
-								</a>
-								<a href="https://linkedin.com/in/tilmohr" class="mx-2 flex items-center text-foreground-primary">
-									<i class="fa-brands fa-linkedin"></i>
-									<span class="ml-2 whitespace-nowrap" >{"tilmohr"}</span>
-								</a>
-							</div>
+					</div>
+					<div class={css!(r#"
+						animation: fadeIn 1s ease 2s forwards;
+						opacity: 0;
+						@keyframes fadeIn {
+							from {
+								opacity: 0;
+							}
+							to {
+								opacity: 1;
+							}
+						}
+					"#)}>
+						<div class="mb-0 mt-14 animate-bounce rounded-full h-14 w-14 text-2xl border-2 border-foreground-tertiary text-foreground-tertiary flex items-center justify-center">
+							<i class="fa-solid fa-angles-down"></i>
 						</div>
 					</div>
 				</div>
@@ -164,7 +195,7 @@ pub fn Home() -> Html {
 			<section id="project_cards" class={String::from("bg-background-tertiary text-foreground-primary ") + &cv_section_css}>
 				<div class={section_box_css.clone()}>
 					<div class={String::from("border-foreground-secondary ") + &section_title_css}>
-						{ translation.projects.clone() }
+						{ translation.projects.to_uppercase().clone() }
 					</div>
 					<div class="flex flex-row flex-wrap justify-around p-5">
 						{

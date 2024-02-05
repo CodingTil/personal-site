@@ -1,7 +1,7 @@
 ---
 slug: fractal
 image: <img loading="lazy" src="images/projects/Fractal/file.webp" alt="Fractal"/>
-title: Fractal (Rust + WebAssembly + WGPU)
+title: Fractal
 color: bg-orange-600
 tagline: Fractal generator written in Rust and compiled to WebAssembly
 url: https://github.com/CodingTil/fractal_rust
@@ -9,23 +9,8 @@ date_range: March 2023
 skills: [rust, webassembly, gpu, shader]
 filters: [rust, webassembly, gpu, shader, wasm]
 ---
-<div class="flex items-center justify-center">
-	<a href="https://www.rust-lang.org/">
-		<i class="text-foreground-primary fa-brands fa-rust" style="font-size: 60px;"></i>
-	</a>
-	<span class="mx-2 text-2xl">+</span>
-	<a href="https://www.rust-lang.org/what/wasm">
-		<img width="68px" height="60px" alt="WebAssembly Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/WebAssembly_Logo.svg/68px-WebAssembly_Logo.svg.png?useskin=vector">
-	</a>
-	<span class="mx-2 text-2xl">+</span>
-	<a href="https://wgpu.rs/">
-		<img src="https://wgpu.rs/logo.min.svg" width="60px" alt="WebGPU Logo">
-	</a>
-</div>
-
 # Overview
 <iframe src="/public/project_code/fractal_rust/index.html" title="Fractal" class="w-full p-2.5 pointer-events-none" style="aspect-ratio: 16 / 9"></iframe>
-<i>If nothing is being displayed, it is possible that your browser does not support WebAssembly or GPU rendering has been disabled.</i>
 
 This small program is written in [Rust](https://www.rust-lang.org/), compiled to [WebAssembly](https://webassembly.org/), and uses the GPU ([wgpu](https://wgpu.rs/)) to render the fractal.
 

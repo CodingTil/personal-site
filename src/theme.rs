@@ -11,38 +11,20 @@ use std::default::Default;
 pub(crate) enum ThemeKind {
 	#[default]
 	Dark,
-	Light,
 }
 
 impl ImplicitClone for ThemeKind {}
 
 impl ThemeKind {
 	pub fn current(&self) -> &Theme {
-		static LIGHT_THEME: Lazy<Theme> = Lazy::new(|| Theme {
-			background_primary: "#FFFFFF".to_string(),
-			background_secondary: "#F0F4F8".to_string(),
-			background_tertiary: "#E2ECF3".to_string(),
-
-			foreground_primary: "#0D2438".to_string(),
-			foreground_secondary: "#1E3951".to_string(),
-			foreground_tertiary: "#5B7387".to_string(),
-
-			other_primary: "#076548".to_string(),
-			other_secondary: "#07966B".to_string(),
-			other_tertiary: "#16C99B".to_string(),
-			other_quaternary: "#7AEDC9".to_string(),
-
-			..Default::default()
-		});
-
 		static DARK_THEME: Lazy<Theme> = Lazy::new(|| Theme {
-			background_primary: "#0D2438".to_string(),
-			background_secondary: "#102C44".to_string(),
-			background_tertiary: "#1E3951".to_string(),
+			background_primary: "#2e3440".to_string(),
+			background_secondary: "#242933".to_string(),
+			background_tertiary: "#3B4252".to_string(),
 
-			foreground_primary: "#fafdff".to_string(),
-			foreground_secondary: "#cfe3f8".to_string(),
-			foreground_tertiary: "#bdc1c5".to_string(),
+			foreground_primary: "#ECEFF4".to_string(),
+			foreground_secondary: "#E5E9f0".to_string(),
+			foreground_tertiary: "#D8DEE9".to_string(),
 
 			other_primary: "#065f46".to_string(),
 			other_secondary: "#059669".to_string(),
@@ -54,7 +36,6 @@ impl ThemeKind {
 
 		match self {
 			ThemeKind::Dark => &DARK_THEME,
-			ThemeKind::Light => &LIGHT_THEME,
 		}
 	}
 }
@@ -90,12 +71,18 @@ pub(crate) struct Theme {
 impl Default for Theme {
 	fn default() -> Theme {
 		Theme {
-			rainbow_1: "#5197E8".to_string(),
+			/*rainbow_1: "#5197E8".to_string(),
 			rainbow_2: "#50E3C2".to_string(),
 			rainbow_3: "#F5A623".to_string(),
 			rainbow_4: "#F8E71C".to_string(),
 			rainbow_5: "#DB2FFF".to_string(),
-			rainbow_6: "#FF5757".to_string(),
+			rainbow_6: "#FF5757".to_string(),*/
+			rainbow_1: "#8fbcbb".to_string(),
+			rainbow_2: "#88c0d0".to_string(),
+			rainbow_3: "#81a1c1".to_string(),
+			rainbow_4: "#5e81ac".to_string(),
+			rainbow_5: "#b48ead".to_string(),
+			rainbow_6: "#d08770".to_string(),
 
 			color_error: "#F44336".to_string(),
 			color_success: "#00C853".to_string(),

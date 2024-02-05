@@ -21,22 +21,22 @@ fn App() -> Html {
 	let theme = use_theme();
 
 	let mut rainbow_css = "".to_owned();
-	rainbow_css += format!(".text-rainbow-1 {{ color: {}; }} .bg-rainbow-1 {{ background-color: {}; }} .border-rainbow-1 {{ border-color: {}; }} ", theme.rainbow_1.clone(), theme.rainbow_1.clone(), theme.rainbow_1.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-2 {{ color: {}; }} .bg-rainbow-2 {{ background-color: {}; }} .border-rainbow-2 {{ border-color: {}; }} ", theme.rainbow_2.clone(), theme.rainbow_2.clone(), theme.rainbow_2.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-3 {{ color: {}; }} .bg-rainbow-3 {{ background-color: {}; }} .border-rainbow-3 {{ border-color: {}; }} ", theme.rainbow_3.clone(), theme.rainbow_3.clone(), theme.rainbow_3.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-4 {{ color: {}; }} .bg-rainbow-4 {{ background-color: {}; }} .border-rainbow-4 {{ border-color: {}; }} ", theme.rainbow_4.clone(), theme.rainbow_4.clone(), theme.rainbow_4.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-5 {{ color: {}; }} .bg-rainbow-5 {{ background-color: {}; }} .border-rainbow-5 {{ border-color: {}; }} ", theme.rainbow_5.clone(), theme.rainbow_5.clone(), theme.rainbow_5.clone()).as_str();
-	rainbow_css += format!(".text-rainbow-6 {{ color: {}; }} .bg-rainbow-6 {{ background-color: {}; }} .border-rainbow-6 {{ border-color: {}; }} ", theme.rainbow_6.clone(), theme.rainbow_6.clone(), theme.rainbow_6.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-1 {{ color: {}; }} .bg-rainbow-1 {{ background-color: {}; }} .border-rainbow-1 {{ border-color: {}; }} .fill-rainbow-1 {{ fill: {}: }} ", theme.rainbow_1.clone(), theme.rainbow_1.clone(), theme.rainbow_1.clone(), theme.rainbow_1.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-2 {{ color: {}; }} .bg-rainbow-2 {{ background-color: {}; }} .border-rainbow-2 {{ border-color: {}; }} .fill-rainbow-2 {{ fill: {}: }} ", theme.rainbow_2.clone(), theme.rainbow_2.clone(), theme.rainbow_2.clone(), theme.rainbow_2.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-3 {{ color: {}; }} .bg-rainbow-3 {{ background-color: {}; }} .border-rainbow-3 {{ border-color: {}; }} .fill-rainbow-3 {{ fill: {}: }} ", theme.rainbow_3.clone(), theme.rainbow_3.clone(), theme.rainbow_3.clone(), theme.rainbow_3.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-4 {{ color: {}; }} .bg-rainbow-4 {{ background-color: {}; }} .border-rainbow-4 {{ border-color: {}; }} .fill-rainbow-4 {{ fill: {}: }} ", theme.rainbow_4.clone(), theme.rainbow_4.clone(), theme.rainbow_4.clone(), theme.rainbow_4.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-5 {{ color: {}; }} .bg-rainbow-5 {{ background-color: {}; }} .border-rainbow-5 {{ border-color: {}; }} .fill-rainbow-5 {{ fill: {}: }} ", theme.rainbow_5.clone(), theme.rainbow_5.clone(), theme.rainbow_5.clone(), theme.rainbow_5.clone()).as_str();
+	rainbow_css += format!(".text-rainbow-6 {{ color: {}; }} .bg-rainbow-6 {{ background-color: {}; }} .border-rainbow-6 {{ border-color: {}; }} .fill-rainbow-6 {{ fill: {}: }} ", theme.rainbow_6.clone(), theme.rainbow_6.clone(), theme.rainbow_6.clone(), theme.rainbow_6.clone()).as_str();
 
 	let mut foreground_css = "".to_owned();
 	foreground_css += format!(".text-foreground-primary {{ color: {}; }} .bg-foreground-primary {{ background-color: {}; }} .border-foreground-primary {{ border-color: {}; }} .fill-foreground-primary {{ fill: {}; }} ", theme.foreground_primary.clone(), theme.foreground_primary.clone(), theme.foreground_primary.clone(), theme.foreground_primary.clone()).as_str();
-	foreground_css += format!(".text-foreground-secondary {{ color: {}; }} .bg-foreground-secondary {{ background-color: {}; }} .border-foreground-secondary {{ border-color: {}; }} ", theme.foreground_secondary.clone(), theme.foreground_secondary.clone(), theme.foreground_secondary.clone()).as_str();
-	foreground_css += format!(".text-foreground-tertiary {{ color: {}; }} .bg-foreground-tertiary {{ background-color: {}; }} .border-foreground-tertiary {{ border-color: {}; }} ", theme.foreground_tertiary.clone(), theme.foreground_tertiary.clone(), theme.foreground_tertiary.clone()).as_str();
+	foreground_css += format!(".text-foreground-secondary {{ color: {}; }} .bg-foreground-secondary {{ background-color: {}; }} .border-foreground-secondary {{ border-color: {}; }} .fill-foreground-secondary {{ fill: {}; }} ", theme.foreground_secondary.clone(), theme.foreground_secondary.clone(), theme.foreground_secondary.clone(), theme.foreground_secondary.clone()).as_str();
+	foreground_css += format!(".text-foreground-tertiary {{ color: {}; }} .bg-foreground-tertiary {{ background-color: {}; }} .border-foreground-tertiary {{ border-color: {}; }} .fill-foreground-tertiary {{ fill: {}; }} ", theme.foreground_tertiary.clone(), theme.foreground_tertiary.clone(), theme.foreground_tertiary.clone(), theme.foreground_tertiary.clone()).as_str();
 
 	let mut background_css = "".to_owned();
-	background_css += format!(".text-background-primary {{ color: {}; }} .bg-background-primary {{ background-color: {}; }} .border-background-primary {{ border-color: {}; }} ", theme.background_primary.clone(), theme.background_primary.clone(), theme.background_primary.clone()).as_str();
-	background_css += format!(".text-background-secondary {{ color: {}; }} .bg-background-secondary {{ background-color: {}; }} .border-background-secondary {{ border-color: {}; }} ", theme.background_secondary.clone(), theme.background_secondary.clone(), theme.background_secondary.clone()).as_str();
-	background_css += format!(".text-background-tertiary {{ color: {}; }} .bg-background-tertiary {{ background-color: {}; }} .border-background-tertiary {{ border-color: {}; }} ", theme.background_tertiary.clone(), theme.background_tertiary.clone(), theme.background_tertiary.clone()).as_str();
+	background_css += format!(".text-background-primary {{ color: {}; }} .bg-background-primary {{ background-color: {}; }} .border-background-primary {{ border-color: {}; }} .fill-background-primary {{ fill: {}; }} ", theme.background_primary.clone(), theme.background_primary.clone(), theme.background_primary.clone(), theme.background_primary.clone()).as_str();
+	background_css += format!(".text-background-secondary {{ color: {}; }} .bg-background-secondary {{ background-color: {}; }} .border-background-secondary {{ border-color: {}; }} .fill-background-secondary {{ fill: {}; }} ", theme.background_secondary.clone(), theme.background_secondary.clone(), theme.background_secondary.clone(), theme.background_secondary.clone()).as_str();
+	background_css += format!(".text-background-tertiary {{ color: {}; }} .bg-background-tertiary {{ background-color: {}; }} .border-background-tertiary {{ border-color: {}; }} .fill-background-tertiary {{ fill: {}; }} ", theme.background_tertiary.clone(), theme.background_tertiary.clone(), theme.background_tertiary.clone(), theme.background_tertiary.clone()).as_str();
 
 	let mut other_css = "".to_owned();
 	other_css += format!(".text-other-primary {{ color: {}; }} .bg-other-primary {{ background-color: {}; }} .border-other-primary {{ border-color: {}; }} ", theme.other_primary.clone(), theme.other_primary.clone(), theme.other_primary.clone()).as_str();
@@ -53,7 +53,7 @@ fn App() -> Html {
 	let html_body_css = format!(
 		r#"
 		html, body {{
-			font-family: 'Poppins', sans-serif;
+			font-family: 'Lexend Deca', sans-serif;
 			padding: 0;
 			margin: 0;
 			display: flex;

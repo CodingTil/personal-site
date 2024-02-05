@@ -11,19 +11,12 @@ pub fn ColorThemePicker() -> Html {
 	let this_theme = theme.kind().clone();
 
 	let other_theme = match this_theme {
-		ThemeKind::Light => ThemeKind::Dark,
-		ThemeKind::Dark => ThemeKind::Light,
+		ThemeKind::Dark => ThemeKind::Dark,
 	};
 
 	let switch_theme = Callback::from(move |_| theme.set(other_theme.clone()));
 
 	match this_theme {
-		ThemeKind::Light => html! {
-			<button class="btn outline-none focus:outline-none" onclick={switch_theme}>
-				<span class="sr-only">{"Switch to dark theme"}</span>
-				<i class="fa-solid fa-moon text-3xl text-indigo-900 hover:text-indigo-700" style="filter:drop-shadow(1px 1px 1px black)"></i>
-			</button>
-		},
 		ThemeKind::Dark => html! {
 			<button class="btn outline-none focus:outline-none" onclick={switch_theme}>
 				<span class="sr-only">{"Switch to light theme"}</span>

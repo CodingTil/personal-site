@@ -8,6 +8,7 @@ use stylist::yew::styled_component;
 use serde::Deserialize;
 use yaml_front_matter::YamlFrontMatter;
 
+use crate::components::icon_badges::BadgesStrip;
 use crate::router::Route;
 
 use crate::safehtml::SafeHtml;
@@ -101,16 +102,16 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 	html! {
 		<div class={String::from("py-3 overflow-auto mx-2 ") + size_css.get_class_name()}>
 			<Link<Route> to={to_route}>
-				<div class={String::from("group h-auto relative mb-3 inline-block ") + hide_css.get_class_name()}>
-					<div class="opacity-100 group-hover:opacity-0">
+				<div class={String::from("group h-auto relative mb-3 inline-block rounded-xl overflow-hidden ") + hide_css.get_class_name()}>
+					<div class="opacity-100 group-hover:opacity-30 transition-opacity duration-500">
 						<SafeHtml html={image.clone()} />
 					</div>
-					<div class={String::from("hidden text-white font-medium p-5 hover:") + &color}>
+					<div class={String::from("font-semibold absolute inset-0 p-4 flex items-center text-center justify-center backdrop-blur-sm backdrop-contrast-40 backdrop-brightness-40 opacity-0 group-hover:opacity-70 transition-opacity duration-500 ") + &color}>
 						{tagline.clone()}
 					</div>
 				</div>
 				<br />
-				<span class="text-foreground-primary font-medium">
+				<span class="text-foreground-primary font-semibold">
 					{title.clone()}
 				</span>
 			</Link<Route>>
@@ -141,7 +142,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 		tagline,
 		url,
 		date_range,
-		skills: _,
+		skills: tags,
 		filters: _,
 		coauthors,
 		report,
@@ -299,19 +300,20 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 		<div class="container mx-0 my-0 w-screen min-w-full">
 			<div class="mx-auto px-4 xl:px-0 mt-4 mb-5 max-w-7xl">
 				<div class="flex flex-row justify-center md:justify-between items-center flex-wrap md:flex-nowrap">
-					<div class="mb-4">
+					<div class="mb-4 border-b-2 md:border-b-0 border-solid border-forgreound-tertiary pb-3 md:pb-0 mb-3 md:md-0">
 						<h1 class="text-foreground-primary text-4xl font-bold mb-2">
 							{title.clone()}
 						</h1>
 						<h3 class="text-foreground-secondary text-2xl font-bold">
 							{tagline.clone()}
 						</h3>
+						<BadgesStrip tags={tags.clone()} scale={None} />
 					</div>
 
-					<div class="border-t-2 md:border-t-0 border-solid border-foreground-tertiary p-2 md:pr-0">
-						<div class="flex flex-row md:flex-col flex-wrap justify-center md:justify-start">
+					<div class="p-2 md:pr-0">
+						<div class="flex flex-col flex-wrap justify-center md:justify-start">
 							<div class="mx-2 flex items-center text-foreground-primary">
-								<i class="fa-solid fa-calendar-days"></i>
+								<i class="fa-solid fa-calendar-days text-rainbow-6"></i>
 								<span class="ml-2 whitespace-nowrap">
 									{date_range.clone()}
 								</span>
@@ -325,7 +327,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 							if let Some(ca_list) = coauthors {
 								if !ca_list.is_empty() {
 									<div class="mx-2 flex items-center text-foreground-primary">
-										<i class="fa-solid fa-users"></i>
+										<i class="fa-solid fa-users text-rainbow-4"></i>
 										<span class="ml-2 whitespace-nowrap">
 											{"Coauthors: "}
 										</span>
@@ -336,7 +338,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 												html! {
 													<a href={ca.url.clone()} class="flex items-center text-foreground-primary">
 														<span class="whitespace-nowrap">
-															{ca.name.clone()}
+															{format!("· {}", ca.name.clone())}
 														</span>
 														<i class="ml-2 fa-solid fa-arrow-up-right-from-square"></i>
 													</a>
@@ -348,7 +350,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 							}
 							if let Some(report_url) = report {
 								<a href={report_url.clone()} class="mx-2 -mt-2 flex items-center text-foreground-primary">
-									<i class="fa-solid fa-file-pdf"></i>
+									<i class="fa-solid fa-file-pdf text-red-400"></i>
 									<span class="ml-2 whitespace-nowrap">
 										{"Report"}
 									</span>
