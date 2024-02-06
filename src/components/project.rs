@@ -55,7 +55,7 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		tagline,
 		url: _,
 		date_range: _,
-		skills: _,
+		skills: tags,
 		filters: _,
 		coauthors: _,
 		report: _,
@@ -108,6 +108,11 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 					</div>
 					<div class={String::from("font-semibold absolute inset-0 p-4 flex items-center text-center justify-center backdrop-blur-sm backdrop-contrast-40 backdrop-brightness-40 opacity-0 group-hover:opacity-70 transition-opacity duration-500 ") + &color}>
 						{tagline.clone()}
+					</div>
+					<div class="absolute bottom-0 right-0 p-2 z-10 flex items-end justify-end">
+						<div class="transform scale-50 translate-x-1/4 translate-y-1/3 p-1 rounded backdrop-blur bg-black/20 shadow-lg shadow-black/20">
+							<BadgesStrip tags={tags.clone()} scale={80} />
+						</div>
 					</div>
 				</div>
 				<br />

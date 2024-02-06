@@ -6,7 +6,7 @@ color: bg-green-600
 tagline: Simplified full-stack chat application
 url: https://github.com/CodingTil/SimpleChat-NuxtJS-Flask
 date_range: February 2021
-skills: [nuxt.js, python, git]
+skills: [nuxt.js, html, css, js, python, git]
 filters: [web]
 ---
 # Overview
