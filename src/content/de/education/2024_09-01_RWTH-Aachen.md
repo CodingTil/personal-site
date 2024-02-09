@@ -26,7 +26,7 @@ location: Aachen, Deutschland
 		<ul>
 			<li>Praktikum</li>
 			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a></li>
-			<li>Mündliches Schwerpunktkolloquium<sup>**</sup></li>
+			<li>Mündliches Schwerpunktkolloquium</li>
 			<li>Masterarbeit<sup>**</sup></li>
 		</ul>
 	</div>

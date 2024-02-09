@@ -26,7 +26,7 @@ location: Aachen, Germany
 		<ul>
 			<li>Internship</li>
 			<li><a href="public/Seminar-Master.pdf" class="no-underline"><span>Seminar</span><i class="fa-solid fa-file-pdf text-red-400 ml-1"></i></a></li>
-			<li>Depth Oral Colloquium<sup>**</sup></li>
+			<li>Depth Oral Colloquium</li>
 			<li>Master's Thesis<sup>**</sup></li>
 		</ul>
 	</div>
