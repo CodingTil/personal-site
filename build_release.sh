@@ -15,6 +15,10 @@ rustup target add wasm32-unknown-unknown
 # Get trunk
 cargo install --locked trunk
 
+# Clean the project
+trunk clean
+cargo clean
+
 # Get current directory
 ROOT_DIR=$(pwd)
 
