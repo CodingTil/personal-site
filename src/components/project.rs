@@ -46,7 +46,6 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 
 	// Get Front Matter
 	let document = YamlFrontMatter::parse::<ProjectMetadata>(&md_str).unwrap();
-	let front_matter = document.metadata;
 	let ProjectMetadata {
 		slug,
 		image,
@@ -59,7 +58,7 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		filters: _,
 		coauthors: _,
 		report: _,
-	} = front_matter;
+	} = document.metadata;
 
 	let size_css = style!(
 		r#"
@@ -137,8 +136,6 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 
 	// Get Front Matter
 	let document = YamlFrontMatter::parse::<ProjectMetadata>(&md_str).unwrap();
-	let front_matter = document.metadata;
-	let md = document.content;
 	let ProjectMetadata {
 		slug: _,
 		image: _,
@@ -151,7 +148,8 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 		filters: _,
 		coauthors,
 		report,
-	} = front_matter;
+	} = document.metadata;
+	let md = document.content;
 
 	let arena = Arena::new();
 	let mut options = ComrakOptions::default();

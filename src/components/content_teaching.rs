@@ -27,14 +27,13 @@ pub fn ContentTeaching(props: &ContentTeachingProps) -> Html {
 
 	// Get Front Matter
 	let document = YamlFrontMatter::parse::<Metadata>(&md_str).unwrap();
-	let front_matter = document.metadata;
-	let md = document.content;
 	let Metadata {
 		title,
 		employer,
 		date_range,
 		location,
-	} = front_matter;
+	} = document.metadata;
+	let md = document.content;
 
 	html! {
 		<ContentItem
