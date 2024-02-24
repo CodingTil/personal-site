@@ -309,7 +309,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 						<h1 class="text-foreground-primary text-4xl font-bold mb-2">
 							{title.clone()}
 						</h1>
-						<h3 class="text-foreground-secondary text-2xl font-bold">
+						<h3 class="text-foreground-secondary text-2xl font-bold mb-2">
 							{tagline.clone()}
 						</h3>
 						<BadgesStrip tags={tags.clone()} scale={None} />

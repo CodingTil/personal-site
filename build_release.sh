@@ -3,6 +3,9 @@
 # Set option to exit on any error
 set -e
 
+# Install binaryen
+sudo apt install binaryen
+
 # Get Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
@@ -12,8 +15,11 @@ source $HOME/.cargo/env
 # Add wasm target
 rustup target add wasm32-unknown-unknown
 
+# Get cargo binstall
+curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
 # Get trunk
-cargo install --locked trunk
+cargo binstall trunk
 
 # Clean the project
 trunk clean
@@ -30,3 +36,10 @@ cp -r $ROOT_DIR/fractal_rust/dist/* $ROOT_DIR/src/public/project_code/fractal_ru
 # Then build the main project
 cd $ROOT_DIR
 trunk build --release
+
+# Find all .wasm files in the current directory and subdirectories
+find dist/ -name "*.wasm" | while read wasm_file; do
+    # Execute wasm-opt command on each file
+    wasm-opt -Oz -o "$wasm_file" "$wasm_file"
+done
+
