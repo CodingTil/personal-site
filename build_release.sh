@@ -3,9 +3,6 @@
 # Set option to exit on any error
 set -e
 
-# Install binaryen
-apt install binaryen
-
 # Get Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
@@ -20,6 +17,9 @@ curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-
 
 # Get trunk
 cargo binstall trunk
+
+# Get wasm-opt
+cargo install wasm-opt --locked
 
 # Clean the project
 trunk clean
