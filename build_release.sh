@@ -16,10 +16,10 @@ rustup target add wasm32-unknown-unknown
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
 # Get trunk
-cargo binstall trunk
+cargo binstall trunk -y
 
 # Get wasm-opt
-cargo install wasm-opt --locked
+cargo binstall wasm-opt -y
 
 # Clean the project
 trunk clean
