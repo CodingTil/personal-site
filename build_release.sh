@@ -33,7 +33,7 @@ cargo clean
 ROOT_DIR=$(pwd)
 
 # Build the tailwind css file
-npx tailwind -o dist/main.css
+npx tailwind -o styles/main.css
 
 # First build the submodules
 cd $ROOT_DIR/fractal_rust

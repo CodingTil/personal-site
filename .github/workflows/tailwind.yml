@@ -14,4 +14,4 @@ jobs:
       - name: Install Dependencies
         run: npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
       - name: Build
-        run: npx tailwind -o dist/main.css
+        run: npx tailwind -o style/main.css
