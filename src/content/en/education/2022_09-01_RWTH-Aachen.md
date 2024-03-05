@@ -4,9 +4,11 @@ education: B.Sc. in Computer Science
 date_range: October 2019 - September 2022
 location: Aachen, Germany
 ---
-<div class="w-full min-w-full">
-	<h3 class="min-w-full">Undergraduate Coursework</h3>
-	<hr>
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Undergraduate Coursework</h3>
+		<hr>
+	</div>
 	<div class="cell">
 		<h4>Practical Computer Science</h4>
 		<ul>
@@ -63,10 +65,12 @@ location: Aachen, Germany
 	</div>
 </div>
 
-<div class="w-full min-w-full">
-	<h3 class="min-w-full">Applied Subject: Business Administration</h3>
-	<hr>
-	<div class="cell-non-md">
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Applied Subject: Business Administration</h3>
+		<hr>
+	</div>
+	<div class="cell">
 		<ul>
 			<li>Introduction to Business Administration</li>
 			<li>Operations Research</li>
@@ -76,11 +80,13 @@ location: Aachen, Germany
 	</div>
 </div>
 
-<div class="w-full min-w-full">
-	<h3 class="min-w-full">Other</h3>
-	<hr>
-	<div class="cell-non-md">
-		<ul>
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Other</h3>
+		<hr>
+	</div>
+	<div class="cell mb-0 pb-0">
+		<ul class="mb-0 pb-0">
 			<li>Global Change - Google Earth Engine</li>
 		</ul>
 	</div>

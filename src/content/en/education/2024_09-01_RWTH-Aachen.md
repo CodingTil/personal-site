@@ -4,9 +4,11 @@ education: M.Sc. in Computer Science
 date_range: October 2022 - September 2024<sup>*</sup>
 location: Aachen, Germany
 ---
-<div class="w-full min-w-full">
-	<h3 class="min-w-full">Postgraduate Coursework</h3>
-	<hr>
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Undergraduate Coursework</h3>
+		<hr>
+	</div>
 	<div class="cell">
 		<h4>Electives</h4>
 		<ul>
@@ -17,8 +19,8 @@ location: Aachen, Germany
 			<li>Physically-Based Animation</li>
 			<li>The Logic of Knowledge Bases</li>
 			<li>Fixpoints and Induction in Logic and Computer Science</li>
-			<li><a href="/eiuie" class="no-underline"><span>Image Processing and Computer Vision</span><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
-			<li><a href="/py_css" class="no-underline"><span>Information Retrieval and Text Mining</span><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
+			<li><a href="/eiuie" class="no-underline"><span>Image Processing and Computer Vision</span><sup>***</sup><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
+			<li><a href="/py_css" class="no-underline"><span>Information Retrieval and Text Mining</span><sup>***</sup><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
 		</ul>
 	</div>
 	<div class="cell">
@@ -32,10 +34,12 @@ location: Aachen, Germany
 	</div>
 </div>
 
-<div class="w-full min-w-full cell-non-md">
-	<h3 class="min-w-full">Applied Subject: Business Administration</h3>
-	<hr>
-	<div class="cell-non-md">
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Applied Subject: Business Administration</h3>
+		<hr>
+	</div>
+	<div class="cell">
 		<ul>
 			<li>Operations Research 1</li>
 			<li>Operations Research 2</li>
@@ -44,11 +48,20 @@ location: Aachen, Germany
 	</div>
 </div>
 
-<div class="w-full min-w-full flex justify-start">
-	<sup class="sup mr-2">
-	* Expected graduation date
-	</sup>
-	<sup class="sup mr-2">
-	** In progress
-	</sup>
+<div class="w-full min-w-full flex flex-col md:flex-wrap md:flex-row md:space-x-2">
+	<div>
+		<sup class="sup">
+		* Expected graduation date
+		</sup>
+	</div>
+	<div>
+		<sup class="sup">
+		** In progress
+		</sup>
+	</div>
+	<div>
+		<sup class="sup">
+		*** During Erasmus+ Semester Exchange
+		</sup>
+	</div>
 </div>

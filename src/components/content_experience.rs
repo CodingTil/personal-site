@@ -16,13 +16,13 @@ struct Metadata {
 }
 
 #[derive(Debug, PartialEq, Properties)]
-pub struct ContentTeachingProps {
+pub struct ContentExperienceProps {
 	pub markdown: String,
 	pub border_color: String,
 }
 
 #[styled_component]
-pub fn ContentTeaching(props: &ContentTeachingProps) -> Html {
+pub fn ContentExperience(props: &ContentExperienceProps) -> Html {
 	let md_str = props.markdown.clone();
 
 	// Get Front Matter

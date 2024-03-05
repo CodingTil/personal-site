@@ -1,0 +1,17 @@
+on: push
+
+name: Tailwind
+
+jobs:
+  install_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+      - name: Install Tailwind
+        run: npm install -D tailwindcss
+      - name: Install Dependencies
+        run: npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
+      - name: Build
+        run: npx tailwind -o dist/main.css

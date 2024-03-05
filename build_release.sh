@@ -21,12 +21,19 @@ cargo binstall trunk -y
 # Get wasm-opt
 cargo binstall wasm-opt -y
 
+# Install tailwindcss and dependencies
+npm install -D tailwindcss
+npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
+
 # Clean the project
 trunk clean
 cargo clean
 
 # Get current directory
 ROOT_DIR=$(pwd)
+
+# Build the tailwind css file
+npx tailwind -o dist/main.css
 
 # First build the submodules
 cd $ROOT_DIR/fractal_rust

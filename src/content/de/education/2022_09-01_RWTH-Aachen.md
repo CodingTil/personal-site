@@ -4,9 +4,11 @@ education: B.Sc. in Informatik
 date_range: Oktober 2019 - September 2022
 location: Aachen, Deutschland
 ---
-<div class="w-full min-w-full">
-	<h3 class="min-w-full">Grundstudium</h3>
-	<hr>
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Grundstudium</h3>
+		<hr>
+	</div>
 	<div class="cell">
 		<h4>Praktische Informatik</h4>
 		<ul>
@@ -63,10 +65,12 @@ location: Aachen, Deutschland
 	</div>
 </div>
 
-<div class="w-full min-w-full">
-	<h3 class="min-w-full">Anwendungsfach: BWL</h3>
-	<hr>
-	<div class="cell-non-md">
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Anwendungsfach: BWL</h3>
+		<hr>
+	</div>
+	<div class="cell">
 		<ul>
 			<li>Einführung in die BWL</li>
 			<li>Quantitative Methoden</li>
@@ -76,11 +80,13 @@ location: Aachen, Deutschland
 	</div>
 </div>
 
-<div class="w-full min-w-full">
-	<h3 class="min-w-full">Other</h3>
-	<hr>
-	<div class="cell-non-md">
-		<ul>
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Sonstiges</h3>
+		<hr>
+	</div>
+	<div class="cell mb-0 pb-0">
+		<ul class="mb-0 pb-0">
 			<li>Klima Wandel - Google Earth Engine</li>
 		</ul>
 	</div>

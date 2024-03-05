@@ -13,27 +13,27 @@ use crate::localization::{use_localization, Localization};
 use crate::safehtml::SafeHtml;
 
 use crate::components::content_education::ContentEducation;
-use crate::components::content_teaching::ContentTeaching;
+use crate::components::content_experience::ContentExperience;
 use crate::components::project::ProjectCard;
 
 struct Translations {
 	projects: Cow<'static, str>,
 	more: Cow<'static, str>,
-	teaching: Cow<'static, str>,
+	experience: Cow<'static, str>,
 	education: Cow<'static, str>,
 }
 
 const EN_TRANSLATIONS: Translations = Translations {
 	projects: Cow::Borrowed("Projects"),
 	more: Cow::Borrowed("More About Me"),
-	teaching: Cow::Borrowed("Teaching"),
+	experience: Cow::Borrowed("Experience"),
 	education: Cow::Borrowed("Education"),
 };
 
 const DE_TRANSLATIONS: Translations = Translations {
 	projects: Cow::Borrowed("Projekte"),
 	more: Cow::Borrowed("Mehr Über Mich"),
-	teaching: Cow::Borrowed("Lehre"),
+	experience: Cow::Borrowed("Erfahrung"),
 	education: Cow::Borrowed("Bildung"),
 };
 
@@ -55,8 +55,8 @@ static CONTENT_DE_EDUCATION_DIR: Dir = include_dir!("src/content/de/education/")
 static CONTENT_EN_EDUCATION_DIR: Dir = include_dir!("src/content/en/education/");
 static CONTENT_DE_PROJECTS_DIR: Dir = include_dir!("src/content/de/projects/");
 static CONTENT_EN_PROJECTS_DIR: Dir = include_dir!("src/content/en/projects/");
-static CONTENT_DE_TEACHING_DIR: Dir = include_dir!("src/content/de/teaching/");
-static CONTENT_EN_TEACHING_DIR: Dir = include_dir!("src/content/en/teaching/");
+static CONTENT_DE_EXPERIENCE_DIR: Dir = include_dir!("src/content/de/experience/");
+static CONTENT_EN_EXPERIENCE_DIR: Dir = include_dir!("src/content/en/experience/");
 
 #[styled_component]
 pub fn Home() -> Html {
@@ -87,18 +87,6 @@ pub fn Home() -> Html {
 	let intro_html = String::from_utf8(intro_html_vec).unwrap();
 	let more_html = String::from_utf8(more_html_vec).unwrap();
 
-	let education_md_dir = match localization.get() {
-		Localization::EN => &CONTENT_EN_EDUCATION_DIR,
-		Localization::DE => &CONTENT_DE_EDUCATION_DIR,
-	};
-	let mut education_md_files = education_md_dir.files().collect::<Vec<_>>();
-	education_md_files.sort_by(|a, b| b.path().cmp(a.path()));
-	let education_md_contents = education_md_files
-		.iter()
-		.map(|file| file.contents_utf8().unwrap())
-		.map(String::from)
-		.collect::<Vec<String>>();
-
 	let projects_md_dir = match localization.get() {
 		Localization::EN => &CONTENT_EN_PROJECTS_DIR,
 		Localization::DE => &CONTENT_DE_PROJECTS_DIR,
@@ -111,14 +99,26 @@ pub fn Home() -> Html {
 		.map(String::from)
 		.collect::<Vec<String>>();
 
-	let teaching_md_dir = match localization.get() {
-		Localization::EN => &CONTENT_EN_TEACHING_DIR,
-		Localization::DE => &CONTENT_DE_TEACHING_DIR,
+	let experience_md_dir = match localization.get() {
+		Localization::EN => &CONTENT_EN_EXPERIENCE_DIR,
+		Localization::DE => &CONTENT_DE_EXPERIENCE_DIR,
 	};
-	let teaching_border_color_offset = education_md_dir.files().count();
-	let mut teaching_md_files = teaching_md_dir.files().collect::<Vec<_>>();
-	teaching_md_files.sort_by(|a, b| b.path().cmp(a.path()));
-	let teaching_md_contents = teaching_md_files
+	let mut experience_md_files = experience_md_dir.files().collect::<Vec<_>>();
+	experience_md_files.sort_by(|a, b| b.path().cmp(a.path()));
+	let experience_md_contents = experience_md_files
+		.iter()
+		.map(|file| file.contents_utf8().unwrap())
+		.map(String::from)
+		.collect::<Vec<String>>();
+
+	let education_md_dir = match localization.get() {
+		Localization::EN => &CONTENT_EN_EDUCATION_DIR,
+		Localization::DE => &CONTENT_DE_EDUCATION_DIR,
+	};
+	let mut education_md_files = education_md_dir.files().collect::<Vec<_>>();
+	let education_border_color_offset = experience_md_dir.files().count();
+	education_md_files.sort_by(|a, b| b.path().cmp(a.path()));
+	let education_md_contents = education_md_files
 		.iter()
 		.map(|file| file.contents_utf8().unwrap())
 		.map(String::from)
@@ -219,6 +219,24 @@ pub fn Home() -> Html {
 				</div>
 			</section>
 
+			/* Experience */
+			<section id="experience" class={String::from("bg-background-tertiary text-foreground-primary ") + &cv_section_css}>
+				<div class={section_box_css.clone()}>
+					<div class={String::from("border-foreground-secondary ") + &section_title_css}>
+						{ translation.experience.clone() }
+					</div>
+					{
+						experience_md_contents.into_iter().enumerate().map(|(index, md_str)| {
+							html! {
+								<div class="min-w-full w-full">
+									<ContentExperience markdown={md_str} border_color={border_color(index)} />
+								</div>
+							}
+						}).collect::<Html>()
+					}
+				</div>
+			</section>
+
 			/* Education */
 			<section id="education" class={String::from("text-foreground-primary ") + &cv_section_css}>
 				<div class={section_box_css.clone()}>
@@ -229,25 +247,7 @@ pub fn Home() -> Html {
 						education_md_contents.into_iter().enumerate().map(|(index, md_str)| {
 							html! {
 								<div class="min-w-full w-full">
-									<ContentEducation markdown={md_str} border_color={border_color(index)} />
-								</div>
-							}
-						}).collect::<Html>()
-					}
-				</div>
-			</section>
-
-			/* Teaching */
-			<section id="teaching" class={String::from("bg-background-tertiary text-foreground-primary ") + &cv_section_css}>
-				<div class={section_box_css.clone()}>
-					<div class={String::from("border-foreground-secondary ") + &section_title_css}>
-						{ translation.teaching.clone() }
-					</div>
-					{
-						teaching_md_contents.into_iter().enumerate().map(|(index, md_str)| {
-							html! {
-								<div class="min-w-full w-full">
-									<ContentTeaching markdown={md_str} border_color={border_color(index + teaching_border_color_offset)} />
+									<ContentEducation markdown={md_str} border_color={border_color(index + education_border_color_offset)} />
 								</div>
 							}
 						}).collect::<Html>()

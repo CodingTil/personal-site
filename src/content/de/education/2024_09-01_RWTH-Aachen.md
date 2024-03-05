@@ -4,9 +4,11 @@ education: M.Sc. in Informatik
 date_range: Oktober 2022 - September 2024<sup>*</sup>
 location: Aachen, Deutschland
 ---
-<div class="w-full min-w-full">
-	<h3 class="min-w-full">Grundstudium</h3>
-	<hr>
+<div class="w-full min-w-full flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Grundstudium</h3>
+		<hr>
+	</div>
 	<div class="cell">
 		<h4>Wahlpflicht</h4>
 		<ul>
@@ -17,8 +19,8 @@ location: Aachen, Deutschland
 			<li>Physikalisch-Basierte Animation</li>
 			<li>The Logic of Knowledge Bases</li>
 			<li>Fixpoints and Induction in Logic and Computer Science</li>
-			<li><a href="/eiuie" class="no-underline"><span>Image Processing and Computer Vision</span><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
-			<li><a href="/py_css" class="no-underline"><span>Information Retrieval and Text Mining</span><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
+			<li><a href="/eiuie" class="no-underline"><span>Image Processing and Computer Vision</span><sup>***</sup><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
+			<li><a href="/py_css" class="no-underline"><span>Information Retrieval and Text Mining</span><sup>***</sup><i class="fa-solid fa-link text-red-400 ml-1"></i></a></li>
 		</ul>
 	</div>
 	<div class="cell">
@@ -32,10 +34,12 @@ location: Aachen, Deutschland
 	</div>
 </div>
 
-<div class="w-full min-w-full cell-non-md">
-	<h3 class="min-w-full">Anwendungsfach: BWL</h3>
-	<hr>
-	<div class="cell-non-md">
+<div class="w-full min-w-full cell flex flex-row flex-wrap">
+	<div class="min-w-full">
+		<h3>Anwendungsfach: BWL</h3>
+		<hr>
+	</div>
+	<div class="cell">
 		<ul>
 			<li>Operations Research 1</li>
 			<li>Operations Research 2</li>
@@ -44,11 +48,20 @@ location: Aachen, Deutschland
 	</div>
 </div>
 
-<div class="w-full min-w-full flex justify-start">
-	<sup class="sup mr-2">
-	* Erwartetes Abschlussdatum
-	</sup>
-	<sup class="sup mr-2">
-	** Noch nicht beendet
-	</sup>
+<div class="w-full min-w-full flex flex-col md:flex-wrap md:flex-row md:space-x-2">
+	<div>
+		<sup class="sup">
+		* Erwartetes Abschlussdatum
+		</sup>
+	</div>
+	<div>
+		<sup class="sup">
+		** Noch nicht beendet
+		</sup>
+	</div>
+	<div>
+		<sup class="sup">
+		*** Während des Erasmus+ Auslandssemesters
+		</sup>
+	</div>
 </div>

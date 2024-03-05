@@ -41,6 +41,7 @@ pub fn ContentItem(props: &ContentEducationProps) -> Html {
 	width: 100%;
 	margin-top: 0.75rem;
 	margin-bottom: 0.75rem;
+	min-height: fit-content;
 	--tw-text-opacity: 1;
 	color: ${fg} !important;
 
@@ -82,7 +83,7 @@ pub fn ContentItem(props: &ContentEducationProps) -> Html {
 	}
 
 	h1 {
-		margin-top: 2rem;
+		margin-top: 0rem;
 		margin-bottom: 0px;
 		border-bottom-width: 1px;
 		--tw-border-opacity: 1;
@@ -91,13 +92,25 @@ pub fn ContentItem(props: &ContentEducationProps) -> Html {
 	}
 
 	h2 {
-		margin-top: 1rem;
+		margin-top: 0rem;
 		margin-bottom: -0.25rem;
+	}
+
+	h3 {
+		margin-top: 0rem;
+		margin-bottom: 0rem;
+	}
+
+	h4 {
+		margin-top: 0rem;
+		margin-bottom: 0rem;
 	}
 
 	hr {
 		--tw-border-opacity: 1;
 		border-color: ${fg};
+		margin-top: 0rem;
+		margin-bottom: 0rem;
 	}
 
 	a.my-a {
@@ -125,14 +138,14 @@ pub fn ContentItem(props: &ContentEducationProps) -> Html {
 	sup {
 		--tw-text-opacity: 1;
 		color:${fg2};
+		text-wrap: nowrap;
 	}
 
 	.cell {
-		float: left;
 		margin-left: 0px;
 		margin-right: 0px;
 		margin-bottom: 1rem;
-		margin-top: -2rem;
+		margin-top: 1rem;
 		min-width: 100%;
 	}
 
@@ -141,17 +154,6 @@ pub fn ContentItem(props: &ContentEducationProps) -> Html {
 			width: 50%;
 			min-width: 0px;
 		}
-	}
-
-	/* used for "last cell" - workaround */
-
-	.cell-non-md {
-		float: left;
-		margin-left: 0px;
-		margin-right: 0px;
-		margin-bottom: 1rem;
-		margin-top: -2rem;
-		min-width: 100%;
 	}
 	"#,
 		fg = theme.foreground_primary.clone(),
