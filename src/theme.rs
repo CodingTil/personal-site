@@ -78,11 +78,11 @@ impl Default for Theme {
 			rainbow_5: "#DB2FFF".to_string(),
 			rainbow_6: "#FF5757".to_string(),*/
 			rainbow_1: "#8fbcbb".to_string(),
-			rainbow_2: "#88c0d0".to_string(),
-			rainbow_3: "#81a1c1".to_string(),
+			rainbow_2: "#bf616a".to_string(),
+			rainbow_3: "#ebcb8b".to_string(),
 			rainbow_4: "#5e81ac".to_string(),
-			rainbow_5: "#b48ead".to_string(),
-			rainbow_6: "#d08770".to_string(),
+			rainbow_5: "#a3be8c".to_string(),
+			rainbow_6: "#b48ead".to_string(),
 
 			color_error: "#F44336".to_string(),
 			color_success: "#00C853".to_string(),

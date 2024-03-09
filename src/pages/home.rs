@@ -143,7 +143,24 @@ pub fn Home() -> Html {
 		@media (max-width: 350px) {
 			font-size: 16vw;
 		}
-	"#
+		"#
+	)
+	.unwrap();
+
+	let into_css = style!(
+		r#"
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		> * {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			justify-content: center;
+			align-items: center;
+		}
+		"#
 	)
 	.unwrap();
 
@@ -153,10 +170,10 @@ pub fn Home() -> Html {
 			<section id="intro" class={String::from("-mt-20 ") + &cv_section_css}>
 				<div class="min-h-screen pt-28 pb-8 px-4 flex flex-col justify-center items-center flex-wrap place-content-between xl:px-0 mx-0 xl:mx-auto max-w-7xl">
 					<span class={String::from("text-rainbow-1 text-bold ") + tilmohr_fontsize_css.get_class_name()}>{"TIL MOHR"}</span>
-					<div class="grow text-center pt-8">
+					<div class={String::from("grow py-8 ") + into_css.get_class_name()}>
 						<SafeHtml html={intro_html} />
 					</div>
-					<div class="pt-8 border-foreground-tertiary">
+					<div class="border-foreground-tertiary">
 						<div class="flex flex-row xl:flex-col flex-wrap justify-center xl:justify-start">
 							<a href="mailto:me@tilmohr.com" class="mx-2 flex items-center text-foreground-primary">
 								<i class="fa-solid fa-envelope text-[#EBCB8B]"></i>

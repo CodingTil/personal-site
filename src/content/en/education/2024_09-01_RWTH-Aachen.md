@@ -61,7 +61,7 @@ location: Aachen, Germany
 	</div>
 	<div>
 		<sup class="sup">
-		*** During Erasmus+ Semester Exchange
+		*** During Erasmus+ Exchange Semester
 		</sup>
 	</div>
 </div>
