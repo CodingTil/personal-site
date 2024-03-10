@@ -49,7 +49,7 @@ impl Typewriter {
 		}
 	}
 
-	fn iswhitespace(c: char) -> bool {
+	fn is_whitespace(c: char) -> bool {
 		matches!(c, ' ' | '\t' | '\n')
 	}
 
@@ -57,7 +57,7 @@ impl Typewriter {
 		s.chars()
 			.map(|c| Block {
 				subtext: Typewriter::character_mapper(c),
-				is_whitespace: Typewriter::iswhitespace(c),
+				is_whitespace: Typewriter::is_whitespace(c),
 			})
 			.collect()
 	}
