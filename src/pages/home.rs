@@ -8,6 +8,7 @@ use comrak::{format_html, parse_document, Arena, ComrakOptions};
 
 use include_dir::{include_dir, Dir};
 
+use crate::components::quotes::Quotes;
 use crate::localization::{use_localization, Localization};
 
 use crate::safehtml::SafeHtml;
@@ -67,10 +68,8 @@ pub fn Home() -> Html {
 		Localization::DE => &DE_TRANSLATIONS,
 	};
 
-	let intro_md_str = match localization.get() {
-		Localization::EN => include_str!("../content/en/intro.md"),
-		Localization::DE => include_str!("../content/de/intro.md"),
-	};
+	let quotes_en = include_str!("../content/en/quotes.yaml");
+	let quotes_de = include_str!("../content/de/quotes.yaml");
 	let more_md_str = match localization.get() {
 		Localization::EN => include_str!("../content/en/more.md"),
 		Localization::DE => include_str!("../content/de/more.md"),
@@ -78,13 +77,9 @@ pub fn Home() -> Html {
 	let arena = Arena::new();
 	let mut options = ComrakOptions::default();
 	options.render.unsafe_ = true;
-	let intro_root = parse_document(&arena, intro_md_str, &options);
 	let more_root = parse_document(&arena, more_md_str, &options);
-	let mut intro_html_vec = vec![];
 	let mut more_html_vec = vec![];
-	format_html(intro_root, &options, &mut intro_html_vec).unwrap();
 	format_html(more_root, &options, &mut more_html_vec).unwrap();
-	let intro_html = String::from_utf8(intro_html_vec).unwrap();
 	let more_html = String::from_utf8(more_html_vec).unwrap();
 
 	let projects_md_dir = match localization.get() {
@@ -147,18 +142,21 @@ pub fn Home() -> Html {
 	)
 	.unwrap();
 
-	let into_css = style!(
+	let quotes_css = style!(
 		r#"
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		height: 100%;
+		max-width: 100%;
+		min-width: 100%;
 
 		> * {
 			display: flex;
-			flex-direction: column;
-			flex-grow: 1;
+			flex-direction: row;
 			justify-content: center;
 			align-items: center;
+			max-width: 100%;
+			min-width: 100%;
 		}
 		"#
 	)
@@ -168,10 +166,14 @@ pub fn Home() -> Html {
 		<div class="min-w-full">
 			/* Intro */
 			<section id="intro" class={String::from("-mt-20 ") + &cv_section_css}>
-				<div class="min-h-screen pt-28 pb-8 px-4 flex flex-col justify-center items-center flex-wrap place-content-between xl:px-0 mx-0 xl:mx-auto max-w-7xl">
+				<div class="min-h-screen pt-28 pb-8 px-4 flex flex-col justify-center items-center xl:px-0 mx-0 xl:mx-auto max-w-7xl">
 					<span class={String::from("text-rainbow-1 text-bold ") + tilmohr_fontsize_css.get_class_name()}>{"TIL MOHR"}</span>
-					<div class={String::from("grow py-8 ") + into_css.get_class_name()}>
-						<SafeHtml html={intro_html} />
+					<div class={String::from("grow py-8 mx-2 ") + quotes_css.get_class_name()}>
+						{ match localization.get() {
+							// If I dont wrap one of the Quotes in a div, it seems that simply the prop is switched, which is not supported!
+							Localization::EN => html! { <Quotes file_content={quotes_en}/> },
+							Localization::DE => html! { <div><Quotes file_content={quotes_de}/></div> },
+						} }
 					</div>
 					<div class="border-foreground-tertiary">
 						<div class="flex flex-row xl:flex-col flex-wrap justify-center xl:justify-start">
