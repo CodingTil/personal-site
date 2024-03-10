@@ -28,7 +28,11 @@ pub struct QuotesProps {
 
 #[styled_component]
 pub fn Quotes(props: &QuotesProps) -> Html {
-	let mut document = serde_yaml::from_str::<Vec<Quote>>(&props.file_content).unwrap().iter().map(|quote| quote.to_string()).collect::<Vec<String>>();
+	let mut document = serde_yaml::from_str::<Vec<Quote>>(&props.file_content)
+		.unwrap()
+		.iter()
+		.map(|quote| quote.to_string())
+		.collect::<Vec<String>>();
 	document.shuffle(&mut rand::thread_rng());
 
 	html! {

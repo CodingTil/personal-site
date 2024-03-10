@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use gloo::timers::callback::Timeout;
+use yew::prelude::*;
 
 struct Block {
 	subtext: String,
@@ -44,16 +44,13 @@ impl Typewriter {
 		match c {
 			'\n' => "<br>".to_string(),
 			'\t' => "&nbsp;&nbsp;&nbsp;&nbsp;".to_string(),
-            '"' => "&quot;".to_string(),
+			'"' => "&quot;".to_string(),
 			_ => c.to_string(),
 		}
 	}
 
 	fn iswhitespace(c: char) -> bool {
-		match c {
-			' ' | '\t' | '\n' => true,
-			_ => false,
-		}
+		matches!(c, ' ' | '\t' | '\n')
 	}
 
 	fn text_mapper(s: String) -> Vec<Block> {
@@ -72,9 +69,15 @@ impl Component for Typewriter {
 
 	fn create(ctx: &Context<Self>) -> Self {
 		let div = gloo_utils::document().create_element("div").unwrap();
-		div.set_class_name(ctx.props().class.as_ref().map(|s| s.as_str()).unwrap_or(""));
+		div.set_class_name(ctx.props().class.as_deref().unwrap_or(""));
 		Typewriter {
-			texts: ctx.props().texts.clone().into_iter().map(Typewriter::text_mapper).collect(),
+			texts: ctx
+				.props()
+				.texts
+				.clone()
+				.into_iter()
+				.map(Typewriter::text_mapper)
+				.collect(),
 			texts_index: 0,
 			curr_text_index: 0,
 			curr_disp_text: String::new(),
@@ -87,7 +90,7 @@ impl Component for Typewriter {
 			Msg::NextChar => {
 				if self.curr_text_index < self.texts[self.texts_index].len() {
 					let block = &self.texts[self.texts_index][self.curr_text_index];
-					self.curr_disp_text.push_str(&block.subtext.as_str());
+					self.curr_disp_text.push_str(block.subtext.as_str());
 					self.curr_text_index += 1;
 					self.schedule_next_char(ctx, block.is_whitespace);
 				} else {
@@ -96,7 +99,12 @@ impl Component for Typewriter {
 			}
 			Msg::Backspace => {
 				if self.curr_text_index > 0 {
-					self.curr_disp_text.truncate(self.curr_disp_text.len() - self.texts[self.texts_index][self.curr_text_index - 1].subtext.len());
+					self.curr_disp_text.truncate(
+						self.curr_disp_text.len()
+							- self.texts[self.texts_index][self.curr_text_index - 1]
+								.subtext
+								.len(),
+					);
 					self.curr_text_index -= 1;
 					self.schedule_backspace(ctx, false);
 				} else {

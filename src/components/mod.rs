@@ -6,5 +6,5 @@ pub mod footer;
 pub mod header;
 pub mod icon_badges;
 pub mod project;
-pub mod typewriter;
 pub mod quotes;
+pub mod typewriter;
