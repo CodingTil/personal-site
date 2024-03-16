@@ -1,30 +1,8 @@
-on:
-  workflow_run:
-    workflows: ["Tailwind"]
-    types:
-      - completed
+on: push
 
 name: Build and test
 
 jobs:
-  build_and_test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Add wasm32 target
-        run: rustup target add wasm32-unknown-unknown
-      - name: Install Trunk
-        run: cargo install --locked trunk
-      - name: Clean
-        run: cargo clean
-      - name: Download CSS artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: tailwind-css
-          path: style/
-      - name: Build
-        run: trunk build --release --verbose
-
   clippy:
     runs-on: ubuntu-latest
     steps:
@@ -38,3 +16,41 @@ jobs:
       - uses: actions/checkout@v2
       - name: Format
         run: cargo fmt --all -- --check
+
+  tailwind-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - name: Install Tailwind
+        run: npm install -D tailwindcss
+      - name: Install Dependencies
+        run: npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
+      - name: Build
+        run: npx tailwind -o style/main.css
+      - name: Upload Style Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: tailwind-style
+          path: style/main.css
+
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add wasm32 target
+        run: rustup target add wasm32-unknown-unknown
+      - name: Install Trunk
+        run: cargo install --locked trunk
+      - name: Clean
+        run: cargo clean
+      - name: Upload Style Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: tailwind-style
+          path: style/main.css
+      - name: Build
+        run: trunk build --release --verbose
