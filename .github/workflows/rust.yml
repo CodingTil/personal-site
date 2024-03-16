@@ -30,12 +30,12 @@ jobs:
       - name: Install Dependencies
         run: npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
       - name: Build
-        run: npx tailwind -o style/main.css
+        run: npx tailwind -o styles/main.css
       - name: Upload Style Artifact
         uses: actions/upload-artifact@v2
         with:
           name: tailwind-style
-          path: style/main.css
+          path: styles/main.css
 
   build_and_test:
     runs-on: ubuntu-latest
@@ -51,6 +51,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: tailwind-style
-          path: style
+          path: styles
       - name: Build
         run: trunk build --release --verbose
