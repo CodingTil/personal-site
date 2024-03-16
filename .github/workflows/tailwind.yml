@@ -17,3 +17,8 @@ jobs:
         run: npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
       - name: Build
         run: npx tailwind -o style/main.css
+      - name: Upload CSS artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: tailwind-css
+          path: style/main.css
