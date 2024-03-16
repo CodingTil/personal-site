@@ -1,12 +1,10 @@
-on: push
-
-name: Build and test
-
 on:
   workflow_run:
     workflows: ["Tailwind"]
     types:
       - completed
+
+name: Build and test
 
 jobs:
   build_and_test:
