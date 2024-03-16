@@ -32,7 +32,7 @@ pub struct ProjectMetadata {
 #[derive(Deserialize)]
 pub struct Coauthor {
 	pub name: String,
-	pub url: String,
+	pub url: Option<String>,
 }
 
 #[derive(Debug, PartialEq, Properties)]
@@ -94,6 +94,7 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		"simplechat" => Route::SimpleChat,
 		"fractal" => Route::Fractal,
 		"eiuie" => Route::Eiuie,
+		"oceancurrents" => Route::OceanCurrents,
 		"py_css" => Route::Pycss,
 		_ => panic!("Invalid slug: {}", slug),
 	};
@@ -197,6 +198,8 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 		position: relative;
 		margin-left: auto;
 		margin-right: auto;
+		margin-top: 0.75rem;
+		margin-bottom: 0.75rem;
 		max-width: 100%;
 		overflow: hidden;
 		padding-left: 0px;
@@ -337,16 +340,26 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 											{"Coauthors: "}
 										</span>
 									</div>
-									<div class="ml-7 mx-2 -mt-2 flex flex-row flex-wrap">
+									<div class="ml-7 mx-2 flex flex-col flex-nowrap">
 										{
 											for ca_list.into_iter().map(|ca| {
-												html! {
-													<a href={ca.url.clone()} class="flex items-center text-foreground-primary">
-														<span class="whitespace-nowrap">
-															{format!("· {}", ca.name.clone())}
-														</span>
-														<i class="ml-2 fa-solid fa-arrow-up-right-from-square"></i>
-													</a>
+												if let Some(link) = ca.url {
+													html! {
+														<a href={link} class="flex items-center text-foreground-primary">
+															<span class="whitespace-nowrap">
+																{format!("· {}", ca.name.clone())}
+															</span>
+															<i class="ml-2 fa-solid fa-arrow-up-right-from-square"></i>
+														</a>
+													}
+												} else {
+													html! {
+														<div class="flex items-center text-foreground-primary">
+															<span class="whitespace-nowrap">
+																{format!("· {}", ca.name.clone())}
+															</span>
+														</div>
+													}
 												}
 											})
 										}

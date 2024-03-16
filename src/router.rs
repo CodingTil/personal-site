@@ -6,6 +6,7 @@ use crate::pages::page_not_found::PageNotFound;
 use crate::pages::projects::eiuie::Eiuie;
 use crate::pages::projects::flappyking::FlappyKing;
 use crate::pages::projects::fractal::Fractal;
+use crate::pages::projects::oceancurrents::OceanCurrents;
 use crate::pages::projects::py_css::Pycss;
 use crate::pages::projects::simplechat::SimpleChat;
 
@@ -21,6 +22,8 @@ pub enum Route {
 	Fractal,
 	#[at("/eiuie")]
 	Eiuie,
+	#[at("/oceancurrents")]
+	OceanCurrents,
 	#[at("/py_css")]
 	Pycss,
 	#[not_found]
@@ -45,6 +48,7 @@ pub fn switch(route: Route) -> Html {
 		Route::SimpleChat => html! { <SimpleChat /> },
 		Route::Fractal => html! { <Fractal /> },
 		Route::Eiuie => html! { <Eiuie /> },
+		Route::OceanCurrents => html! { <OceanCurrents /> },
 		Route::Pycss => html! { <Pycss /> },
 		Route::NotFound => html! { <PageNotFound /> },
 	}
