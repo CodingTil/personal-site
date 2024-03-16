@@ -47,10 +47,10 @@ jobs:
         run: cargo install --locked trunk
       - name: Clean
         run: cargo clean
-      - name: Upload Style Artifact
-        uses: actions/upload-artifact@v2
+      - name: Download Style Artifact
+        uses: actions/download-artifact@v2
         with:
           name: tailwind-style
-          path: style/main.css
+          path: style
       - name: Build
         run: trunk build --release --verbose
