@@ -34,7 +34,7 @@ location: Aachen, Deutschland
 	</div>
 </div>
 
-<div class="w-full min-w-full cell flex flex-row flex-wrap">
+<div class="w-full min-w-full flex flex-row flex-wrap">
 	<div class="min-w-full">
 		<h3>Anwendungsfach: BWL</h3>
 		<hr>
