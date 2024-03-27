@@ -24,6 +24,7 @@ pub struct ProjectMetadata {
 	pub url: String,
 	pub date_range: String,
 	pub skills: Vec<String>,
+	#[allow(dead_code)]
 	pub filters: Vec<String>,
 	pub coauthors: Option<Vec<Coauthor>>,
 	pub report: Option<String>,
@@ -307,7 +308,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 	html! {
 		<div class="container mx-0 my-0 w-screen min-w-full">
 			<div class="mx-auto px-4 xl:px-0 mt-4 mb-5 max-w-7xl">
-				<div class="flex flex-row justify-center md:justify-between items-center flex-wrap md:flex-nowrap">
+				<div class="flex flex-row justify-start md:justify-between items-center flex-wrap md:flex-nowrap">
 					<div class="mb-4 border-b-2 md:border-b-0 border-solid border-forgreound-tertiary pb-3 md:pb-0 mb-3 md:md-0">
 						<h1 class="text-foreground-primary text-4xl font-bold mb-2">
 							{title.clone()}
@@ -318,7 +319,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 						<BadgesStrip tags={tags.clone()} scale={None} />
 					</div>
 
-					<div class="p-2 md:pr-0">
+					<div class="md:p-2 md:pr-0 justify-self-start md:justify-self-auto">
 						<div class="flex flex-col flex-wrap justify-center md:justify-start">
 							<div class="mx-2 flex items-center text-foreground-primary">
 								<i class="fa-solid fa-calendar-days text-rainbow-6"></i>

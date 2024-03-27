@@ -29,13 +29,13 @@ pub struct Typewriter {
 
 impl Typewriter {
 	fn schedule_next_char(&mut self, ctx: &Context<Self>, immediate: bool) {
-		let delay = if immediate { 0 } else { 80 };
+		let delay = if immediate { 0 } else { 85 };
 		let link = ctx.link().clone();
 		Timeout::new(delay, move || link.send_message(Msg::NextChar)).forget();
 	}
 
 	fn schedule_backspace(&mut self, ctx: &Context<Self>, delayed: bool) {
-		let delay = if delayed { 500 } else { 40 };
+		let delay = if delayed { 1200 } else { 25 };
 		let link = ctx.link().clone();
 		Timeout::new(delay, move || link.send_message(Msg::Backspace)).forget();
 	}

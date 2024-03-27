@@ -3,3 +3,6 @@
 /.vscode
 .DS_Store
 styles/
+package.json
+package-lock.json
+node_modules/
