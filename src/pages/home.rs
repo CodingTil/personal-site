@@ -4,14 +4,10 @@ use stylist::style;
 use stylist::yew::styled_component;
 use yew::prelude::*;
 
-use comrak::{format_html, parse_document, Arena, ComrakOptions};
-
 use include_dir::{include_dir, Dir};
 
 use crate::components::quotes::Quotes;
 use crate::localization::{use_localization, Localization};
-
-use crate::safehtml::SafeHtml;
 
 use crate::components::content_education::ContentEducation;
 use crate::components::content_experience::ContentExperience;
@@ -19,21 +15,18 @@ use crate::components::project::ProjectCard;
 
 struct Translations {
 	projects: Cow<'static, str>,
-	more: Cow<'static, str>,
 	experience: Cow<'static, str>,
 	education: Cow<'static, str>,
 }
 
 const EN_TRANSLATIONS: Translations = Translations {
 	projects: Cow::Borrowed("Projects"),
-	more: Cow::Borrowed("More About Me"),
 	experience: Cow::Borrowed("Experience"),
 	education: Cow::Borrowed("Education"),
 };
 
 const DE_TRANSLATIONS: Translations = Translations {
 	projects: Cow::Borrowed("Projekte"),
-	more: Cow::Borrowed("Mehr Über Mich"),
 	experience: Cow::Borrowed("Erfahrung"),
 	education: Cow::Borrowed("Bildung"),
 };
@@ -70,17 +63,6 @@ pub fn Home() -> Html {
 
 	let quotes_en = include_str!("../content/en/quotes.yaml");
 	let quotes_de = include_str!("../content/de/quotes.yaml");
-	let more_md_str = match localization.get() {
-		Localization::EN => include_str!("../content/en/more.md"),
-		Localization::DE => include_str!("../content/de/more.md"),
-	};
-	let arena = Arena::new();
-	let mut options = ComrakOptions::default();
-	options.render.unsafe_ = true;
-	let more_root = parse_document(&arena, more_md_str, &options);
-	let mut more_html_vec = vec![];
-	format_html(more_root, &options, &mut more_html_vec).unwrap();
-	let more_html = String::from_utf8(more_html_vec).unwrap();
 
 	let projects_md_dir = match localization.get() {
 		Localization::EN => &CONTENT_EN_PROJECTS_DIR,
@@ -228,18 +210,8 @@ pub fn Home() -> Html {
 				</div>
 			</section>
 
-			/* More About Me */
-			<section id="more_about_me" class={String::from("bg-foreground-tertiary text-background-primary ") + &cv_section_css}>
-				<div class={section_box_css.clone()}>
-					<div class={String::from("border-background-primary mb-3 ") + &section_title_css}>
-						{ translation.more.clone() }
-					</div>
-					<SafeHtml html={more_html} />
-				</div>
-			</section>
-
 			/* Experience */
-			<section id="experience" class={String::from("bg-background-tertiary text-foreground-primary ") + &cv_section_css}>
+			<section id="experience" class={String::from("text-foreground-primary ") + &cv_section_css}>
 				<div class={section_box_css.clone()}>
 					<div class={String::from("border-foreground-secondary ") + &section_title_css}>
 						{ translation.experience.clone() }
@@ -257,7 +229,7 @@ pub fn Home() -> Html {
 			</section>
 
 			/* Education */
-			<section id="education" class={String::from("text-foreground-primary ") + &cv_section_css}>
+			<section id="education" class={String::from("bg-background-tertiary text-foreground-primary ") + &cv_section_css}>
 				<div class={section_box_css.clone()}>
 					<div class={String::from("border-foreground-secondary ") + &section_title_css}>
 						{ translation.education.clone() }
