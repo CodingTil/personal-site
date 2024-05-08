@@ -1,2 +1,2 @@
 /*
-  Content-Security-Policy: script-src 'self' *.cloudflareinsights.com; connect-src 'self';
+  Content-Security-Policy: script-src 'self' https://*.cloudflareinsights.com 'unsafe-inline'; connect-src 'self';
