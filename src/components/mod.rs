@@ -7,4 +7,5 @@ pub mod header;
 pub mod icon_badges;
 pub mod project;
 pub mod quotes;
+pub mod tags;
 pub mod typewriter;

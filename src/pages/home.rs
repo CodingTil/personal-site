@@ -6,7 +6,7 @@ use yew::prelude::*;
 
 use include_dir::{include_dir, Dir};
 
-use crate::components::quotes::Quotes;
+use crate::components::tags::Tags;
 use crate::localization::{use_localization, Localization};
 
 use crate::components::content_education::ContentEducation;
@@ -61,8 +61,8 @@ pub fn Home() -> Html {
 		Localization::DE => &DE_TRANSLATIONS,
 	};
 
-	let quotes_en = include_str!("../content/en/quotes.yaml");
-	let quotes_de = include_str!("../content/de/quotes.yaml");
+	let tags_en = include_str!("../content/en/tags.yaml");
+	let tags_de = include_str!("../content/de/tags.yaml");
 
 	let projects_md_dir = match localization.get() {
 		Localization::EN => &CONTENT_EN_PROJECTS_DIR,
@@ -153,8 +153,8 @@ pub fn Home() -> Html {
 					<div class={String::from("grow py-8 mx-2 ") + quotes_css.get_class_name()}>
 						{ match localization.get() {
 							// If I dont wrap one of the Quotes in a div, it seems that simply the prop is switched, which is not supported!
-							Localization::EN => html! { <Quotes file_content={quotes_en}/> },
-							Localization::DE => html! { <div><Quotes file_content={quotes_de}/></div> },
+							Localization::EN => html! { <Tags file_content={tags_en}/> },
+							Localization::DE => html! { <div><Tags file_content={tags_de}/></div> },
 						} }
 					</div>
 					<div class="border-foreground-tertiary">
