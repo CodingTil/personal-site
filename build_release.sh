@@ -37,12 +37,12 @@ npx tailwind -o styles/main.css
 
 # First build the submodules
 cd $ROOT_DIR/fractal_rust
-trunk build --release --public-url "/public/project_code/fractal_rust/"
+trunk build --release --no-sri --public-url "/public/project_code/fractal_rust/"
 cp -r $ROOT_DIR/fractal_rust/dist/* $ROOT_DIR/src/public/project_code/fractal_rust/
 
 # Then build the main project
 cd $ROOT_DIR
-trunk build --release
+trunk build --release  --no-sri
 
 # Find all .wasm files in the current directory and subdirectories
 find dist/ -name "*.wasm" | while read wasm_file; do
