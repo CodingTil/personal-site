@@ -1,0 +1,2 @@
+/*
+  Content-Security-Policy: script-src 'self' *.cloudflareinsights.com; connect-src 'self';
