@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: npx tailwind -o styles/main.css
       - name: Upload Style Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: tailwind-style
           path: styles/main.css
@@ -48,7 +48,7 @@ jobs:
       - name: Clean
         run: cargo clean
       - name: Download Style Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: tailwind-style
           path: styles
