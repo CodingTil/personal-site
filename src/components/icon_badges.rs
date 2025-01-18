@@ -3,7 +3,7 @@ use yew::prelude::*;
 use stylist::{style, yew::styled_component};
 
 pub fn get_icon_badge(name: &str) -> Option<Html> {
-	return match name.to_lowercase().as_str() {
+	match name.to_lowercase().as_str() {
 		"java" => Some(html! {<Java />}),
 		"python" => Some(html! {<Python />}),
 		"rust" => Some(html! {<Rust />}),
@@ -27,7 +27,7 @@ pub fn get_icon_badge(name: &str) -> Option<Html> {
 		"nuxtjs" => Some(html! {<Vue />}),
 		"nuxt.js" => Some(html! {<Vue />}),
 		_ => None,
-	};
+	}
 }
 
 #[derive(Debug, PartialEq, Properties)]
