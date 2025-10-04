@@ -19,10 +19,17 @@ curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-
 cargo binstall trunk -y
 
 # Get wasm-opt
-cargo binstall wasm-opt -y
+# cargo binstall wasm-pack # not up to date
+# Get latest wasm-opt (Binaryen) locally, since crates.io version is outdated
+WASM_OPT_VERSION=version_124
+curl -L -o binaryen.tar.gz "https://github.com/WebAssembly/binaryen/releases/download/${WASM_OPT_VERSION}/binaryen-${WASM_OPT_VERSION}-x86_64-linux.tar.gz"
+tar -xzf binaryen.tar.gz
+mv binaryen-${WASM_OPT_VERSION}/bin/wasm-opt ./wasm-opt
+chmod +x ./wasm-opt
+export PATH="$(pwd):$PATH"
 
 # Install tailwindcss and dependencies
-npm install -D tailwindcss
+npm install -D tailwindcss @tailwindcss/cli
 npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
 
 # Clean the project
@@ -33,7 +40,7 @@ cargo clean
 ROOT_DIR=$(pwd)
 
 # Build the tailwind css file
-npx tailwind -o styles/main.css
+npx @tailwindcss/cli -o styles/main.css
 
 # First build the submodules
 cd $ROOT_DIR/fractal_rust
@@ -42,7 +49,7 @@ cp -r $ROOT_DIR/fractal_rust/dist/* $ROOT_DIR/src/public/project_code/fractal_ru
 
 # Then build the main project
 cd $ROOT_DIR
-trunk build --release  --no-sri
+trunk build --release --no-sri
 
 # Find all .wasm files in the current directory and subdirectories
 find dist/ -name "*.wasm" | while read wasm_file; do

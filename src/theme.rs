@@ -18,17 +18,20 @@ impl ImplicitClone for ThemeKind {}
 impl ThemeKind {
 	pub fn current(&self) -> &Theme {
 		static DARK_THEME: Lazy<Theme> = Lazy::new(|| Theme {
-			background_primary: "#2e3440".to_string(),
-			background_secondary: "#242933".to_string(),
-			background_tertiary: "#3B4252".to_string(),
+			// Richer, deeper backgrounds with better contrast
+			background_primary: "#0F172A".to_string(),   // Slate 900
+			background_secondary: "#1E293B".to_string(), // Slate 800
+			background_tertiary: "#334155".to_string(),  // Slate 700
 
-			foreground_primary: "#ECEFF4".to_string(),
-			foreground_secondary: "#E5E9f0".to_string(),
-			foreground_tertiary: "#D8DEE9".to_string(),
+			// Brighter foregrounds for better readability
+			foreground_primary: "#F1F5F9".to_string(),   // Slate 100
+			foreground_secondary: "#E2E8F0".to_string(), // Slate 200
+			foreground_tertiary: "#CBD5E1".to_string(),  // Slate 300
 
-			other_primary: "#065f46".to_string(),
-			other_secondary: "#059669".to_string(),
-			other_tertiary: "#10b981".to_string(),
+			// Modern accent colors
+			other_primary: "#059669".to_string(),
+			other_secondary: "#10b981".to_string(),
+			other_tertiary: "#34d399".to_string(),
 			other_quaternary: "#6ee7b7".to_string(),
 
 			..Default::default()
@@ -71,23 +74,18 @@ pub(crate) struct Theme {
 impl Default for Theme {
 	fn default() -> Theme {
 		Theme {
-			/*rainbow_1: "#5197E8".to_string(),
-			rainbow_2: "#50E3C2".to_string(),
-			rainbow_3: "#F5A623".to_string(),
-			rainbow_4: "#F8E71C".to_string(),
-			rainbow_5: "#DB2FFF".to_string(),
-			rainbow_6: "#FF5757".to_string(),*/
-			rainbow_1: "#8fbcbb".to_string(),
-			rainbow_2: "#bf616a".to_string(),
-			rainbow_3: "#ebcb8b".to_string(),
-			rainbow_4: "#5e81ac".to_string(),
-			rainbow_5: "#a3be8c".to_string(),
-			rainbow_6: "#b48ead".to_string(),
+			// Modern vibrant rainbow palette with better saturation
+			rainbow_1: "#60A5FA".to_string(), // Modern blue
+			rainbow_2: "#F472B6".to_string(), // Modern pink
+			rainbow_3: "#FBBF24".to_string(), // Modern amber
+			rainbow_4: "#A78BFA".to_string(), // Modern purple
+			rainbow_5: "#34D399".to_string(), // Modern emerald
+			rainbow_6: "#FB923C".to_string(), // Modern orange
 
-			color_error: "#F44336".to_string(),
-			color_success: "#00C853".to_string(),
-			color_warning: "#FF7043".to_string(),
-			color_info: "#A7FFEB".to_string(),
+			color_error: "#F87171".to_string(),
+			color_success: "#34D399".to_string(),
+			color_warning: "#FBBF24".to_string(),
+			color_info: "#60A5FA".to_string(),
 
 			background_primary: "#000000".to_string(),
 			background_secondary: "#000000".to_string(),
@@ -113,14 +111,6 @@ pub(crate) struct ThemeContext {
 impl ThemeContext {
 	pub fn new(inner: UseStateHandle<ThemeKind>) -> Self {
 		Self { inner }
-	}
-
-	pub fn set(&self, kind: ThemeKind) {
-		self.inner.set(kind)
-	}
-
-	pub fn kind(&self) -> ThemeKind {
-		(*self.inner).clone()
 	}
 }
 

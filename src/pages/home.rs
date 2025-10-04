@@ -109,20 +109,37 @@ pub fn Home() -> Html {
 		"inline-block px-6 py-4 w-min font-extrabold text-4xl whitespace-nowrap underline",
 	);
 
-	let tilmohr_fontsize_css = style!(
+	let tilmohr_fontsize_css = css!(
 		r#"
-		font-size: 18vw;
+		font-size: 12vw;
+		font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+		font-weight: 700;
+		background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 25%, #F472B6 50%, #FBBF24 75%, #34D399 100%);
+		background-size: 200% 200%;
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: gradient-x 8s ease infinite;
+		letter-spacing: -0.02em;
 
 		@media (min-width: 1280px) {
-			font-size: 15em;
+			font-size: 8em;
 		}
 
 		@media (max-width: 350px) {
-			font-size: 16vw;
+			font-size: 10vw;
+		}
+
+		@keyframes gradient-x {
+			0%, 100% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
 		}
 		"#
-	)
-	.unwrap();
+	);
 
 	let quotes_css = style!(
 		r#"
@@ -148,34 +165,107 @@ pub fn Home() -> Html {
 		<div class="min-w-full">
 			/* Intro */
 			<section id="intro" class={String::from("-mt-20 ") + &cv_section_css}>
-				<div class="min-h-screen pt-28 pb-8 px-4 flex flex-col justify-center items-center xl:px-0 mx-0 xl:mx-auto max-w-7xl">
-					<span class={String::from("text-rainbow-1 text-bold ") + tilmohr_fontsize_css.get_class_name()}>{"TIL MOHR"}</span>
-					<div class={String::from("grow py-8 mx-2 ") + quotes_css.get_class_name()}>
+				<div class={css!(r#"
+					min-height: 100vh;
+					padding-top: 7rem;
+					padding-bottom: 2rem;
+					padding-left: 1rem;
+					padding-right: 1rem;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					max-width: 80rem;
+					margin-left: auto;
+					margin-right: auto;
+					@media (min-width: 80rem) {
+						padding-left: 0;
+						padding-right: 0;
+					}
+				"#)}>
+					<span class={tilmohr_fontsize_css}>{"TIL MOHR"}</span>
+					<div class={String::from("py-6 mx-2 max-w-4xl ") + quotes_css.get_class_name()}>
 						{ match localization.get() {
 							// If I dont wrap one of the Quotes in a div, it seems that simply the prop is switched, which is not supported!
 							Localization::EN => html! { <Tags file_content={tags_en}/> },
 							Localization::DE => html! { <div><Tags file_content={tags_de}/></div> },
 						} }
 					</div>
-					<div class="border-foreground-tertiary">
-						<div class="flex flex-row xl:flex-col flex-wrap justify-center xl:justify-start">
-							<a href="mailto:me@tilmohr.com" class="mx-2 flex items-center text-foreground-primary">
-								<i class="fa-solid fa-envelope text-[#EBCB8B]"></i>
-								<span class="ml-2 whitespace-nowrap">{"me@tilmohr.com"}</span>
-							</a>
-							<a href="https://github.com/CodingTil" class="mx-2 flex items-center text-foreground-primary">
-								<i class="fa-brands fa-square-github"></i>
-								<span class="ml-2 whitespace-nowrap" >{"CodingTil"}</span>
-							</a>
-							<a href="https://linkedin.com/in/tilmohr" class="mx-2 flex items-center text-foreground-primary">
-								<i class="fa-brands fa-linkedin text-[#0077B5]"></i>
-								<span class="ml-2 whitespace-nowrap" >{"tilmohr"}</span>
-							</a>
-						</div>
+					<div class={css!(r#"
+						margin-top: 3rem;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						gap: 1rem;
+						@media (min-width: 768px) {
+							flex-direction: row;
+							flex-wrap: nowrap;
+							gap: 1.5rem;
+						}
+						@media (min-width: 80rem) {
+							flex-direction: column;
+							justify-content: flex-start;
+						}
+					"#)}>
+						<a href="mailto:me@tilmohr.com" class={css!(r#"
+							display: flex;
+							align-items: center;
+							gap: 0.5rem;
+							padding: 0.75rem 1.5rem;
+							background-color: rgba(51, 65, 85, 0.5);
+							border-radius: 0.75rem;
+							transition: all 0.3s ease;
+							border: 1px solid rgba(203, 213, 225, 0.1);
+							&:hover {
+								transform: translateY(-2px);
+								background-color: rgba(71, 85, 105, 0.6);
+								box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+							}
+						"#)}>
+							<i class="fa-solid fa-envelope text-xl text-rainbow-3"></i>
+							<span class="text-foreground-primary font-medium whitespace-nowrap">{"me@tilmohr.com"}</span>
+						</a>
+						<a href="https://github.com/CodingTil" class={css!(r#"
+							display: flex;
+							align-items: center;
+							gap: 0.5rem;
+							padding: 0.75rem 1.5rem;
+							background-color: rgba(51, 65, 85, 0.5);
+							border-radius: 0.75rem;
+							transition: all 0.3s ease;
+							border: 1px solid rgba(203, 213, 225, 0.1);
+							&:hover {
+								transform: translateY(-2px);
+								background-color: rgba(71, 85, 105, 0.6);
+								box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+							}
+						"#)}>
+							<i class="fa-brands fa-square-github text-xl text-rainbow-1"></i>
+							<span class="text-foreground-primary font-medium whitespace-nowrap" >{"CodingTil"}</span>
+						</a>
+						<a href="https://linkedin.com/in/tilmohr" class={css!(r#"
+							display: flex;
+							align-items: center;
+							gap: 0.5rem;
+							padding: 0.75rem 1.5rem;
+							background-color: rgba(51, 65, 85, 0.5);
+							border-radius: 0.75rem;
+							transition: all 0.3s ease;
+							border: 1px solid rgba(203, 213, 225, 0.1);
+							&:hover {
+								transform: translateY(-2px);
+								background-color: rgba(71, 85, 105, 0.6);
+								box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+							}
+						"#)}>
+							<i class="fa-brands fa-linkedin text-xl text-[#0077B5]"></i>
+							<span class="text-foreground-primary font-medium whitespace-nowrap" >{"tilmohr"}</span>
+						</a>
 					</div>
 					<div class={css!(r#"
-						animation: fadeIn 1s ease 2s forwards;
+						animation: fadeIn 1s ease 2s forwards, float 6s ease-in-out 3s infinite;
 						opacity: 0;
+						margin-top: 4rem;
 						@keyframes fadeIn {
 							from {
 								opacity: 0;
@@ -184,10 +274,36 @@ pub fn Home() -> Html {
 								opacity: 1;
 							}
 						}
+						@keyframes float {
+							0%, 100% {
+								transform: translateY(0px);
+							}
+							50% {
+								transform: translateY(-10px);
+							}
+						}
 					"#)}>
-						<div class="mb-0 mt-14 animate-bounce rounded-full h-14 w-14 text-2xl border-2 border-foreground-tertiary text-foreground-tertiary flex items-center justify-center">
+						<a href="#project_cards" class={css!(r#"
+							border-radius: 9999px;
+							height: 3.5rem;
+							width: 3.5rem;
+							font-size: 1.5rem;
+							border: 2px solid rgba(203, 213, 225, 0.3);
+							color: rgba(203, 213, 225, 0.7);
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+							transition: all 0.3s ease;
+							cursor: pointer;
+							&:hover {
+								border-color: rgba(203, 213, 225, 0.5);
+								color: rgba(203, 213, 225, 0.9);
+								transform: scale(1.1);
+							}
+						"#)}>
 							<i class="fa-solid fa-angles-down"></i>
-						</div>
+						</a>
 					</div>
 				</div>
 			</section>

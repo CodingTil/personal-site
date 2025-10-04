@@ -32,9 +32,8 @@ pub fn ContentItem(props: &ContentEducationProps) -> Html {
 	options.extension.strikethrough = true;
 	options.extension.tasklist = true;
 	let root = parse_document(&arena, &md, &options);
-	let mut md_html_vec = vec![];
-	format_html(root, &options, &mut md_html_vec).unwrap();
-	let md_html = String::from_utf8(md_html_vec).unwrap();
+	let mut md_html = String::new();
+	format_html(root, &options, &mut md_html).unwrap();
 
 	let prose_content_css = style!(
 		r#"

@@ -100,34 +100,65 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		_ => panic!("Invalid slug: {}", slug),
 	};
 
+	let card_css = css!(
+		r#"
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		border: 1px solid rgba(203, 213, 225, 0.1);
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+		&:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+			border-color: rgba(203, 213, 225, 0.2);
+		}
+		"#
+	);
+
 	html! {
-		<div class={String::from("py-3 overflow-auto mx-2 ") + size_css.get_class_name()}>
+		<div class={classes!("py-3", "overflow-auto", "mx-2", size_css)}>
 			<Link<Route> to={to_route}>
-				<div class={String::from("group h-auto relative mb-3 inline-block rounded-xl overflow-hidden ") + hide_css.get_class_name()}>
-					<div class="opacity-100 group-hover:opacity-30 transition-opacity duration-500">
+				<div class={classes!("group", "h-auto", "relative", "mb-4", "inline-block", "rounded-xl", "overflow-hidden", hide_css, card_css)}>
+					<div class="opacity-100 group-hover:opacity-20 transition-all duration-500">
 						<SafeHtml html={image.clone()} />
 					</div>
-					<div class={String::from("font-semibold absolute inset-0 p-4 flex items-center text-center justify-center backdrop-blur-sm backdrop-contrast-40 backdrop-brightness-40 opacity-0 group-hover:opacity-70 transition-opacity duration-500 ") + &color}>
-						{tagline.clone()}
+					<div class={String::from("font-semibold text-lg absolute inset-0 p-6 flex items-center text-center justify-center backdrop-blur-md backdrop-contrast-50 backdrop-brightness-50 opacity-0 group-hover:opacity-100 transition-all duration-500 ") + &color}>
+						<div class={css!(r#"
+							transform: translateY(10px);
+							transition: transform 0.3s ease;
+							.group:hover & {
+								transform: translateY(0);
+							}
+						"#)}>
+							{tagline.clone()}
+						</div>
 					</div>
 					<div class="absolute bottom-0 right-0 p-2 z-10 flex items-end justify-end">
-						<div class="transform scale-50 translate-x-1/4 translate-y-1/3 p-1 rounded backdrop-blur bg-black/20 shadow-lg shadow-black/20">
+						<div class={css!(r#"
+							transform: scale(0.5) translateX(25%) translateY(33%);
+							padding: 0.25rem;
+							border-radius: 0.5rem;
+							backdrop-filter: blur(8px);
+							background-color: rgba(0, 0, 0, 0.3);
+							box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+						"#)}>
 							<BadgesStrip tags={tags.clone()} scale={80} />
 						</div>
 					</div>
 				</div>
-				<br />
-				<span class="text-foreground-primary font-semibold">
+				<span class={css!(r#"
+					font-size: 1.125rem;
+					font-weight: 600;
+					color: #F1F5F9;
+					transition: color 0.2s ease;
+					&:hover {
+						color: #60A5FA;
+					}
+				"#)}>
 					{title.clone()}
 				</span>
 			</Link<Route>>
 		</div>
 	}
-}
-
-#[derive(Debug, PartialEq, Properties)]
-pub struct ProjectPostProps {
-	pub markdown: String,
 }
 
 #[styled_component]
@@ -162,9 +193,8 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 	options.extension.strikethrough = true;
 	options.extension.tasklist = true;
 	let root = parse_document(&arena, &md, &options);
-	let mut md_html_vec = vec![];
-	format_html(root, &options, &mut md_html_vec).unwrap();
-	let md_html = String::from_utf8(md_html_vec).unwrap();
+	let mut md_html = String::new();
+	format_html(root, &options, &mut md_html).unwrap();
 
 	let prose_content_css = style!(
 		r#"

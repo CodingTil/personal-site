@@ -6,31 +6,31 @@ jobs:
   clippy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - name: Clippy
         run: cargo clippy --all-features -- -D warnings
 
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - name: Format
         run: cargo fmt --all -- --check
 
   tailwind-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - name: Install Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v5
         with:
-          node-version: '14'
+          node-version: '24'
       - name: Install Tailwind
-        run: npm install -D tailwindcss
+        run: npm install -D tailwindcss @tailwindcss/cli
       - name: Install Dependencies
         run: npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
       - name: Build
-        run: npx tailwind -o styles/main.css
+        run: npx @tailwindcss/cli -o styles/main.css
       - name: Upload Style Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -40,7 +40,7 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - name: Add wasm32 target
         run: rustup target add wasm32-unknown-unknown
       - name: Install Trunk
@@ -48,7 +48,7 @@ jobs:
       - name: Clean
         run: cargo clean
       - name: Download Style Artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: tailwind-style
           path: styles
