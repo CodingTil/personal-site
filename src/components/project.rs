@@ -1,14 +1,11 @@
 use comrak::{format_html, parse_document, Arena, ComrakOptions};
-use stylist::style;
+use serde::Deserialize;
+use stylist::yew::styled_component;
+use stylist::{css, style};
+use yaml_front_matter::YamlFrontMatter;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use stylist::yew::styled_component;
-
-use serde::Deserialize;
-use yaml_front_matter::YamlFrontMatter;
-
-use crate::components::icon_badges::BadgesStrip;
 use crate::router::Route;
 
 use crate::safehtml::SafeHtml;
@@ -51,44 +48,10 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		slug,
 		image,
 		title,
-		color,
 		tagline,
-		url: _,
-		date_range: _,
 		skills: tags,
-		filters: _,
-		coauthors: _,
-		report: _,
+		..
 	} = document.metadata;
-
-	let size_css = style!(
-		r#"
-		@media (min-width: 640px) {
-			max-width: 100%;
-		}
-		@media (min-width: 768px) {
-			max-width: 45%;
-		}
-		@media (min-width: 1024px) {
-			max-width: 30%;
-		}
-	"#
-	)
-	.unwrap();
-	let hide_css = style!(
-		r#"
-		:hover .hidden {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-			display: inline-block;
-		}
-	"#
-	)
-	.unwrap();
 
 	let to_route = match slug.as_str() {
 		"flappyking" => Route::FlappyKing,
@@ -100,64 +63,189 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		_ => panic!("Invalid slug: {}", slug),
 	};
 
-	let card_css = css!(
-		r#"
-		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		border: 1px solid rgba(203, 213, 225, 0.1);
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-		&:hover {
-			transform: translateY(-8px);
-			box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-			border-color: rgba(203, 213, 225, 0.2);
-		}
-		"#
-	);
-
 	html! {
-		<div class={classes!("py-3", "overflow-auto", "mx-2", size_css)}>
-			<Link<Route> to={to_route}>
-				<div class={classes!("group", "h-auto", "relative", "mb-4", "inline-block", "rounded-xl", "overflow-hidden", hide_css, card_css)}>
-					<div class="opacity-100 group-hover:opacity-20 transition-all duration-500">
+		<Link<Route> to={to_route}>
+			<div class={css!(r#"
+				position: relative;
+				border-radius: 1rem;
+				overflow: hidden;
+				background: rgba(30, 41, 59, 0.5);
+				border: 1px solid rgba(203, 213, 225, 0.1);
+				transition: all 0.3s ease;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+
+				&:hover {
+					transform: translateY(-4px);
+					border-color: rgba(96, 165, 250, 0.3);
+					box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+					background: rgba(30, 41, 59, 0.7);
+				}
+			"#)}>
+				<div class={css!(r#"
+					position: relative;
+					overflow: hidden;
+					aspect-ratio: 16 / 9;
+					background: rgba(15, 23, 42, 0.5);
+				"#)}>
+					<div class={css!(r#"
+						transition: all 0.5s ease;
+						&:hover {
+							transform: scale(1.05);
+						}
+					"#)}>
 						<SafeHtml html={image.clone()} />
 					</div>
-					<div class={String::from("font-semibold text-lg absolute inset-0 p-6 flex items-center text-center justify-center backdrop-blur-md backdrop-contrast-50 backdrop-brightness-50 opacity-0 group-hover:opacity-100 transition-all duration-500 ") + &color}>
-						<div class={css!(r#"
-							transform: translateY(10px);
-							transition: transform 0.3s ease;
-							.group:hover & {
-								transform: translateY(0);
-							}
-						"#)}>
-							{tagline.clone()}
-						</div>
-					</div>
-					<div class="absolute bottom-0 right-0 p-2 z-10 flex items-end justify-end">
-						<div class={css!(r#"
-							transform: scale(0.5) translateX(25%) translateY(33%);
-							padding: 0.25rem;
-							border-radius: 0.5rem;
-							backdrop-filter: blur(8px);
-							background-color: rgba(0, 0, 0, 0.3);
-							box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-						"#)}>
-							<BadgesStrip tags={tags.clone()} scale={80} />
-						</div>
+
+					<div class={css!(r#"
+						position: absolute;
+						inset: 0;
+						background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.8) 100%);
+						opacity: 0;
+						transition: opacity 0.3s ease;
+
+						&:hover {
+							opacity: 1;
+						}
+					"#)} />
+				</div>
+
+				<div class={css!(r#"
+					padding: 1.5rem;
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+				"#)}>
+					<h3 class={css!(r#"
+						font-size: 1.25rem;
+						font-weight: 700;
+						color: #F1F5F9;
+						margin-bottom: 0.5rem;
+						font-family: 'Space Grotesk', sans-serif;
+					"#)}>
+						{title.clone()}
+					</h3>
+
+					<p class={css!(r#"
+						color: rgba(203, 213, 225, 0.7);
+						font-size: 0.875rem;
+						line-height: 1.5;
+						margin-bottom: 1rem;
+					"#)}>
+						{tagline.clone()}
+					</p>
+
+					<div class={css!(r#"
+						display: flex;
+						flex-wrap: wrap;
+						gap: 0.5rem;
+						margin-top: auto;
+					"#)}>
+						{
+							for tags.iter().take(3).map(|tag| {
+								html! {
+									<span class={css!(r#"
+										padding: 0.25rem 0.75rem;
+										background: rgba(96, 165, 250, 0.1);
+										border: 1px solid rgba(96, 165, 250, 0.2);
+										border-radius: 0.375rem;
+										font-size: 0.75rem;
+										color: #60A5FA;
+										font-weight: 500;
+									"#)}>
+										{tag}
+									</span>
+								}
+							})
+						}
 					</div>
 				</div>
-				<span class={css!(r#"
-					font-size: 1.125rem;
-					font-weight: 600;
-					color: #F1F5F9;
-					transition: color 0.2s ease;
-					&:hover {
-						color: #60A5FA;
+			</div>
+		</Link<Route>>
+	}
+}
+
+/// Render coauthors block
+fn render_coauthors(coauthors: Option<Vec<Coauthor>>) -> Html {
+	match coauthors {
+		Some(ca_list) if !ca_list.is_empty() => ca_list
+			.iter()
+			.map(|ca| match &ca.url {
+				Some(url) => {
+					html! {
+						<a href={url.clone()} class={css!(r#"
+    						display: flex;
+    						align-items: center;
+    						gap: 0.5rem;
+    						padding: 0.5rem 1rem;
+    						background: rgba(30, 41, 59, 0.5);
+    						border: 1px solid rgba(203, 213, 225, 0.1);
+    						border-radius: 0.5rem;
+    						color: rgba(203, 213, 225, 0.8);
+    						font-size: 0.875rem;
+                            transition: all 0.2s ease;
+                            &:hover {
+                                color: #A78BFA;
+                                border-color: rgba(96, 165, 250, 0.3);
+                                background: rgba(30, 41, 59, 0.7);
+                            }
+    					"#)}>
+							  <i class="fa-solid fa-users"></i>
+							  <span>{&ca.name}</span>
+						  </a>
 					}
-				"#)}>
-					{title.clone()}
-				</span>
-			</Link<Route>>
-		</div>
+				}
+				None => {
+					html! {
+						<div class={css!(r#"
+						display: flex;
+						align-items: center;
+						gap: 0.5rem;
+						padding: 0.5rem 1rem;
+						background: rgba(30, 41, 59, 0.5);
+						border: 1px solid rgba(203, 213, 225, 0.1);
+						border-radius: 0.5rem;
+						color: rgba(203, 213, 225, 0.8);
+						font-size: 0.875rem;
+					"#)}>
+								  <i class="fa-solid fa-users"></i>
+								  <span>{&ca.name}</span>
+							  </div>
+					}
+				}
+			})
+			.collect::<Html>(),
+		_ => html! {},
+	}
+}
+
+/// Render report link block
+fn render_report_link(report_url: Option<String>) -> Html {
+	match report_url {
+		Some(report_url) => html! {
+			<a href={report_url} class={css!(r#"
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.5rem 1rem;
+				background: rgba(30, 41, 59, 0.5);
+				border: 1px solid rgba(203, 213, 225, 0.1);
+				border-radius: 0.5rem;
+				color: rgba(203, 213, 225, 0.8);
+				font-size: 0.875rem;
+				transition: all 0.2s ease;
+				&:hover {
+					color: #EF4444;
+					border-color: rgba(239, 68, 68, 0.3);
+					background: rgba(30, 41, 59, 0.7);
+				}
+			"#)}>
+				<i class="fa-solid fa-file-pdf"></i>
+				<span>{"View Report"}</span>
+			</a>
+		},
+		_ => html! {},
 	}
 }
 
@@ -336,85 +424,122 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 	.unwrap();
 
 	html! {
-		<div class="container mx-0 my-0 w-screen min-w-full">
-			<div class="mx-auto px-4 xl:px-0 mt-4 mb-5 max-w-7xl">
-				<div class="flex flex-row justify-start md:justify-between items-center flex-wrap md:flex-nowrap">
-					<div class="mb-4 border-b-2 md:border-b-0 border-solid border-forgreound-tertiary pb-3 md:pb-0 mb-3 md:md-0">
-						<h1 class="text-foreground-primary text-4xl font-bold mb-2">
-							{title.clone()}
-						</h1>
-						<h3 class="text-foreground-secondary text-2xl font-bold mb-2">
-							{tagline.clone()}
-						</h3>
-						<BadgesStrip tags={tags.clone()} scale={None} />
+		<div class={css!(r#"
+			width: 100vw;
+			min-width: 100%;
+			background: #0F172A;
+			padding-top: 6rem;
+		"#)}>
+			<div class={css!(r#"
+				max-width: 80rem;
+				margin: 0 auto;
+				padding: 0 1rem 2rem;
+				@media (min-width: 1280px) {
+					padding: 0 0 2rem;
+				}
+			"#)}>
+				<div class={css!(r#"
+					margin-bottom: 3rem;
+				"#)}>
+					<h1 class={css!(r#"
+						font-size: clamp(2.5rem, 6vw, 4rem);
+						font-weight: 800;
+						color: #F1F5F9;
+						margin-bottom: 1rem;
+						font-family: 'Space Grotesk', sans-serif;
+						line-height: 1.2;
+					"#)}>
+						{title.clone()}
+					</h1>
+					<p class={css!(r#"
+						font-size: 1.5rem;
+						color: rgba(203, 213, 225, 0.8);
+						margin-bottom: 2rem;
+						line-height: 1.5;
+					"#)}>
+						{tagline.clone()}
+					</p>
+
+					<div class={css!(r#"
+    					display: flex;
+    					flex-wrap: wrap;
+						gap: 1rem;
+						margin-bottom: 2rem;
+					"#)}>
+						<div class={css!(r#"
+							display: flex;
+							align-items: center;
+							gap: 0.5rem;
+							padding: 0.5rem 1rem;
+							background: rgba(30, 41, 59, 0.5);
+							border: 1px solid rgba(203, 213, 225, 0.1);
+							border-radius: 0.5rem;
+							color: rgba(203, 213, 225, 0.8);
+							font-size: 0.875rem;
+						"#)}>
+							<i class="fa-solid fa-calendar-days"></i>
+							<span>{date_range.clone()}</span>
+						</div>
+						<a href={url.clone()} class={css!(r#"
+							display: flex;
+							align-items: center;
+							gap: 0.5rem;
+							padding: 0.5rem 1rem;
+							background: rgba(30, 41, 59, 0.5);
+							border: 1px solid rgba(203, 213, 225, 0.1);
+							border-radius: 0.5rem;
+							color: rgba(203, 213, 225, 0.8);
+							font-size: 0.875rem;
+							transition: all 0.2s ease;
+							&:hover {
+								color: #60A5FA;
+								border-color: rgba(96, 165, 250, 0.3);
+								background: rgba(30, 41, 59, 0.7);
+							}
+						"#)}>
+							<i class="fa-brands fa-github"></i>
+							<span>{"Repository"}</span>
+						</a>
+
+						{ render_coauthors(coauthors) }
+						{ render_report_link(report) }
 					</div>
 
-					<div class="md:p-2 md:pr-0 justify-self-start md:justify-self-auto">
-						<div class="flex flex-col flex-wrap justify-center md:justify-start">
-							<div class="mx-2 flex items-center text-foreground-primary">
-								<i class="fa-solid fa-calendar-days text-rainbow-6"></i>
-								<span class="ml-2 whitespace-nowrap">
-									{date_range.clone()}
-								</span>
-							</div>
-							<a href={url.clone()} class="mx-2 flex items-center text-foreground-primary">
-								<i class="fa-brands fa-square-github"></i>
-								<span class="ml-2 whitespace-nowra">
-									{"git"}
-								</span>
-							</a>
-							if let Some(ca_list) = coauthors {
-								if !ca_list.is_empty() {
-									<div class="mx-2 flex items-center text-foreground-primary">
-										<i class="fa-solid fa-users text-rainbow-4"></i>
-										<span class="ml-2 whitespace-nowrap">
-											{"Coauthors: "}
-										</span>
-									</div>
-									<div class="ml-7 mx-2 flex flex-col flex-nowrap">
-										{
-											for ca_list.into_iter().map(|ca| {
-												if let Some(link) = ca.url {
-													html! {
-														<a href={link} class="flex items-center text-foreground-primary">
-															<span class="whitespace-nowrap">
-																{format!("· {}", ca.name.clone())}
-															</span>
-															<i class="ml-2 fa-solid fa-arrow-up-right-from-square"></i>
-														</a>
-													}
-												} else {
-													html! {
-														<div class="flex items-center text-foreground-primary">
-															<span class="whitespace-nowrap">
-																{format!("· {}", ca.name.clone())}
-															</span>
-														</div>
-													}
-												}
-											})
-										}
-									</div>
-								}
-							}
-							if let Some(report_url) = report {
-								<a href={report_url.clone()} class="mx-2 -mt-2 flex items-center text-foreground-primary">
-									<i class="fa-solid fa-file-pdf text-red-400"></i>
-									<span class="ml-2 whitespace-nowrap">
-										{"Report"}
+					<div class={css!(r#"
+						display: flex;
+						flex-wrap: wrap;
+						gap: 0.5rem;
+					"#)}>
+						{
+							for tags.iter().map(|tag| {
+								html! {
+									<span class={css!(r#"
+										padding: 0.375rem 0.875rem;
+										background: rgba(96, 165, 250, 0.1);
+										border: 1px solid rgba(96, 165, 250, 0.2);
+										border-radius: 0.5rem;
+										font-size: 0.875rem;
+										color: #60A5FA;
+										font-weight: 500;
+									"#)}>
+										{tag}
 									</span>
-								</a>
-							}
-						</div>
+								}
+							})
+						}
 					</div>
 				</div>
-			</div>
 
-			<div class={String::from("h-2 w-full ") + &color} />
+				<div class={format!("h-1 w-full mb-8 {}", color)} />
 
-			<div class="mt-8 mb-14 px-4 xl:px-0 mx-auto max-w-7xl">
-				<div class={String::from(prose_content_css.get_class_name()) + " prose"}>
-					<SafeHtml html={md_html.clone()} />
+				<div class={css!(r#"
+					max-width: 80rem;
+					margin: 0 auto;
+					padding: 0 1rem;
+				"#)}>
+					<div class={format!("{} prose prose-invert prose-lg max-w-none", prose_content_css.get_class_name())}>
+						<SafeHtml html={md_html.clone()} />
+					</div>
 				</div>
 			</div>
 		</div>

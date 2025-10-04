@@ -5,7 +5,7 @@ title: Fractal
 color: bg-orange-600
 tagline: Generator von Fraktalen geschrieben in Rust und kompiliert zu WebAssembly
 url: https://github.com/CodingTil/fractal_rust
-date_range: March 2023
+date_range: März 2023
 skills: [rust, webassembly, gpu, shader]
 filters: [rust, webassembly, gpu, shader, wasm]
 ---
