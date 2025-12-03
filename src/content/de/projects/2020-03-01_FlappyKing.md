@@ -4,7 +4,7 @@ image: <img loading="lazy" src="images/projects/FlappyKing/train.webp" alt="Flap
 title: FlappyKing
 color: bg-cyan-600
 tagline: NEAT Algorithmus lernt Flappy Bird zu spielen
-url: https://github.com/CodingTil/FlappyKing
+repository_url: https://github.com/CodingTil/FlappyKing
 date_range: Juli 2019 - Januar 2020
 skills: [java, lwjgl, git]
 filters: [games, ai]

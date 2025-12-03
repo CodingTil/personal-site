@@ -4,7 +4,7 @@ image: <img loading="lazy" src="images/projects/OceanCurrents/thumbnail.webp" al
 title: Ocean Current Analysis
 color: bg-blue-900
 tagline: Examination of the North Atlantic cirulation using the Google Earth Engine
-url: https://github.com/CodingTil/ocean_currents
+repository_url: https://github.com/CodingTil/ocean_currents
 date_range: October 2021
 skills: [python, javascript, google earth engine]
 filters: [python, javascript, google earth engine]

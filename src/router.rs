@@ -9,6 +9,7 @@ use crate::pages::projects::fractal::Fractal;
 use crate::pages::projects::oceancurrents::OceanCurrents;
 use crate::pages::projects::py_css::Pycss;
 use crate::pages::projects::simplechat::SimpleChat;
+use crate::pages::projects::wordle_rs::WordleRs;
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
@@ -26,6 +27,8 @@ pub enum Route {
 	OceanCurrents,
 	#[at("/py_css")]
 	Pycss,
+	#[at("/wordle-rs")]
+	WordleRs,
 	#[not_found]
 	#[at("/404")]
 	NotFound,
@@ -50,6 +53,7 @@ pub fn switch(route: Route) -> Html {
 		Route::Eiuie => html! { <Eiuie /> },
 		Route::OceanCurrents => html! { <OceanCurrents /> },
 		Route::Pycss => html! { <Pycss /> },
+		Route::WordleRs => html! { <WordleRs /> },
 		Route::NotFound => html! { <PageNotFound /> },
 	}
 }

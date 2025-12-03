@@ -4,7 +4,7 @@ image: <img loading="lazy" src="images/projects/Fractal/file.webp" alt="Fractal"
 title: Fractal
 color: bg-orange-600
 tagline: Fractal generator written in Rust and compiled to WebAssembly
-url: https://github.com/CodingTil/fractal_rust
+repository_url: https://github.com/CodingTil/fractal_rust
 date_range: March 2023
 skills: [rust, webassembly, gpu, shader]
 filters: [rust, webassembly, gpu, shader, wasm]

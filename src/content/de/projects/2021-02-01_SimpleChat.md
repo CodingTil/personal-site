@@ -4,7 +4,7 @@ image: <img loading="lazy" src="images/projects/SimpleChat/chat.webp" alt="Simpl
 title: SimpleChat
 color: bg-green-600
 tagline: Vereinfachte full-stack Chat App
-url: https://github.com/CodingTil/SimpleChat-NuxtJS-Flask
+repository_url: https://github.com/CodingTil/SimpleChat-NuxtJS-Flask
 date_range: Februar 2021
 skills: [nuxt.js, html, css, js, python, git]
 filters: [web]

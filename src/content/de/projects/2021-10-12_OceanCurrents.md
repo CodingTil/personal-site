@@ -4,7 +4,7 @@ image: <img loading="lazy" src="images/projects/OceanCurrents/thumbnail.webp" al
 title: Analyse von Meeresströmungen
 color: bg-blue-900
 tagline: Untersuchung der Nordatlantikzirkulation mit der Google Earth Engine
-url: https://github.com/CodingTil/ocean_currents
+repository_url: https://github.com/CodingTil/ocean_currents
 date_range: Oktober 2021
 skills: [python, javascript, google earth engine]
 filters: [python, javascript, google earth engine]
