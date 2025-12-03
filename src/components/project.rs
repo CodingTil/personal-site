@@ -18,13 +18,14 @@ pub struct ProjectMetadata {
 	pub title: String,
 	pub color: String,
 	pub tagline: String,
-	pub url: String,
+	pub repository_url: String,
 	pub date_range: String,
 	pub skills: Vec<String>,
 	#[allow(dead_code)]
 	pub filters: Vec<String>,
 	pub coauthors: Option<Vec<Coauthor>>,
 	pub report: Option<String>,
+	pub url: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -60,6 +61,7 @@ pub fn ProjectCard(props: &ProjectCardProps) -> Html {
 		"eiuie" => Route::Eiuie,
 		"oceancurrents" => Route::OceanCurrents,
 		"py_css" => Route::Pycss,
+		"wordle-rs" => Route::WordleRs,
 		_ => panic!("Invalid slug: {}", slug),
 	};
 
@@ -249,6 +251,35 @@ fn render_report_link(report_url: Option<String>) -> Html {
 	}
 }
 
+/// Render further url block
+fn render_url(url: Option<String>) -> Html {
+	match url {
+		Some(url) => html! {
+			<a href={url} class={css!(r#"
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.5rem 1rem;
+				background: rgba(30, 41, 59, 0.5);
+				border: 1px solid rgba(203, 213, 225, 0.1);
+				border-radius: 0.5rem;
+				color: rgba(203, 213, 225, 0.8);
+				font-size: 0.875rem;
+				transition: all 0.2s ease;
+				&:hover {
+					color: #EF4444;
+					border-color: rgba(239, 68, 68, 0.3);
+					background: rgba(30, 41, 59, 0.7);
+				}
+			"#)}>
+				<i class="fa-solid fa-link"></i>
+				<span>{"Visit Website"}</span>
+			</a>
+		},
+		_ => html! {},
+	}
+}
+
 #[styled_component]
 pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 	let theme = use_theme();
@@ -263,12 +294,13 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 		title,
 		color,
 		tagline,
-		url,
+		repository_url,
 		date_range,
 		skills: tags,
 		filters: _,
 		coauthors,
 		report,
+		url,
 	} = document.metadata;
 	let md = document.content;
 
@@ -480,7 +512,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 							<i class="fa-solid fa-calendar-days"></i>
 							<span>{date_range.clone()}</span>
 						</div>
-						<a href={url.clone()} class={css!(r#"
+						<a href={repository_url.clone()} class={css!(r#"
 							display: flex;
 							align-items: center;
 							gap: 0.5rem;
@@ -503,6 +535,7 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 
 						{ render_coauthors(coauthors) }
 						{ render_report_link(report) }
+						{ render_url(url) }
 					</div>
 
 					<div class={css!(r#"
