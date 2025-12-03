@@ -2,7 +2,7 @@ use yew::prelude::*;
 
 use stylist::{style, yew::styled_component};
 
-use comrak::{format_html, parse_document, Arena, ComrakOptions};
+use comrak::{format_html, parse_document, Arena, Options};
 
 use crate::{safehtml::SafeHtml, theme::use_theme};
 
@@ -25,9 +25,9 @@ pub fn ContentItem(props: &ContentEducationProps) -> Html {
 
 	// Render html
 	let arena = Arena::new();
-	let mut options = ComrakOptions::default();
+	let mut options = Options::default();
 	options.extension.front_matter_delimiter = Some("---".to_string());
-	options.render.unsafe_ = true;
+	options.render.r#unsafe = true;
 	options.extension.table = true;
 	options.extension.strikethrough = true;
 	options.extension.tasklist = true;

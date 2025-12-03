@@ -1,4 +1,4 @@
-use comrak::{format_html, parse_document, Arena, ComrakOptions};
+use comrak::{format_html, parse_document, Arena, Options};
 use serde::Deserialize;
 use stylist::yew::styled_component;
 use stylist::{css, style};
@@ -273,9 +273,9 @@ pub fn ProjectPost(props: &ProjectCardProps) -> Html {
 	let md = document.content;
 
 	let arena = Arena::new();
-	let mut options = ComrakOptions::default();
+	let mut options = Options::default();
 	options.extension.front_matter_delimiter = Some("---".to_string());
-	options.render.unsafe_ = true;
+	options.render.r#unsafe = true;
 	options.extension.autolink = true;
 	options.extension.table = true;
 	options.extension.strikethrough = true;

@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-comrak = "0.43.0"
-getrandom = { version = "0.3.3", features = ["wasm_js"] }
+comrak = "0.48.0"
+getrandom = { version = "0.3.4", features = ["wasm_js"] }
 gloo = "0.11.0"
 gloo-utils = "0.2.0"
 include_dir = "0.7.4"
@@ -14,7 +14,7 @@ rand = "0.9.2"
 serde = { version = "1.0.228", features = ["derive"] }
 serde_yaml = "0.9.34"
 stylist = { version = "0.13.0", features = ["yew_integration", "parser"] }
-web-sys = { version = "0.3.81", features = ["ScrollToOptions", "Window"] }
+web-sys = { version = "0.3.83", features = ["ScrollToOptions", "Window"] }
 yaml-front-matter = "0.1.0"
 yew = { version = "0.21.0", features = ["csr"] }
 yew-router = "0.18.0"
