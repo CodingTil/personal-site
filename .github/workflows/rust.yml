@@ -48,7 +48,7 @@ jobs:
       - name: Clean
         run: cargo clean
       - name: Download Style Artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: tailwind-style
           path: styles
