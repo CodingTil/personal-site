@@ -18,7 +18,7 @@ pub fn Footer() -> Html {
 					font-size: 0.875rem;
 					line-height: 1.5;
 				"#)}>
-					{"© 2025 Til Mohr"}
+					{"© 2026 Til Mohr"}
 					{" · "}
 					<a href="https://github.com/CodingTil/personal-site" class={css!(r#"
 						color: rgba(203, 213, 225, 0.6);
