@@ -6,21 +6,21 @@ jobs:
   clippy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Clippy
         run: cargo clippy --all-features -- -D warnings
 
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Format
         run: cargo fmt --all -- --check
 
   tailwind-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Install Node.js
         uses: actions/setup-node@v5
         with:
@@ -40,7 +40,7 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Add wasm32 target
         run: rustup target add wasm32-unknown-unknown
       - name: Install Trunk
