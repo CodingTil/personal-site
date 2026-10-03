@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: npx @tailwindcss/cli -o styles/main.css
       - name: Upload Style Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: tailwind-style
           path: styles/main.css
