@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-comrak = "0.48.0"
+comrak = "1.0.0"
 getrandom = { version = "0.3.4", features = ["wasm_js"] }
 gloo = "0.11.0"
 gloo-utils = "0.2.0"
